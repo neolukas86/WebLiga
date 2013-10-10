@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC
+"-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"
+"http://struts.apache.org/dtds/struts-2.0.dtd">
+ 
+<struts>
+ 
+<package name="partido" extends="default">
+		
+	<action name="IntroducirResultadoIndividual" method="IntroducirResultadoIndividual"
+			class="com.proyecto.actions.PartidoIndividualAction">
+		<result type="redirectAction">
+			<param name="actionName">VerTorneo</param>
+			<param name="namespace">/torneo</param>
+			<param name="id">${idtorneo}</param>
+			<param name="tab">partidos</param>
+		</result>
+	</action>
+	<action name="IntroducirResultadoEquipo" method="IntroducirResultadoEquipo"
+			class="com.proyecto.actions.PartidoEquiposAction">
+		<result type="redirectAction">
+			<param name="actionName">VerTorneo</param>
+			<param name="namespace">/torneo</param>
+			<param name="id">${idtorneo}</param>
+			<param name="tab">partidos</param>
+		</result>
+	</action>	
+	<action name="IntroducirResultadoIndividualConfirmado" method="IntroducirResultadoIndividual"
+			class="com.proyecto.actions.PartidoIndividualAction">
+		<result type="redirectAction">
+			<param name="actionName">ConfirmarResultadoIndividual</param>
+			<param name="id">${id}</param>
+		</result>
+	</action>
+	<action name="IntroducirResultadoEquipoConfirmado" method="IntroducirResultadoEquipo"
+			class="com.proyecto.actions.PartidoEquiposAction">
+		<result type="redirectAction">
+			<param name="actionName">ConfirmarResultadoEquipo</param>
+			<param name="id">${id}</param>
+		</result>
+	</action>	
+<!-- 	<action name="IntroducirResultadoEquipos" method="IntroducirResultadoEquipos" -->
+<!-- 			class="com.proyecto.actions.PartidoIndividualAction"> -->
+<!-- 		<result type="redirectAction"> -->
+<!-- 			<param name="actionName">VerTorneo</param> -->
+<!-- 			<param name="namespace">/torneo</param> -->
+<!-- 			<param name="id">${idtorneo}</param> -->
+<!-- 			<param name="tab">4</param> -->
+<!-- 		</result> -->
+<!-- 	</action> -->
+	<action name="RechazarResultadoIndividual" method="RechazarResultado"
+			class="com.proyecto.actions.PartidoIndividualAction">
+		<result type="redirectAction">
+			<param name="actionName">VerTorneo</param>
+			<param name="namespace">/torneo</param>
+			<param name="id">${idtorneo}</param>
+			<param name="tab">partidos</param>
+		</result>
+	</action>
+	<action name="RechazarResultadoEquipo" method="RechazarResultado"
+			class="com.proyecto.actions.PartidoEquiposAction">
+		<result type="redirectAction">
+			<param name="actionName">VerTorneo</param>
+			<param name="namespace">/torneo</param>
+			<param name="id">${idtorneo}</param>
+			<param name="tab">partidos</param>
+		</result>
+	</action>	
+	<action name="ConfirmarResultadoIndividual" method="ConfirmarResultado"
+			class="com.proyecto.actions.PartidoIndividualAction">
+		<result type="redirectAction">
+			<param name="actionName">ComprobarPartidosJornadaConfirmados</param>
+			<param name="namespace">/torneo</param>
+			<param name="id">${idtorneo}</param>
+		</result>
+		<result name="finalizado" type="redirectAction">
+			<param name="actionName">VerTorneo</param>
+			<param name="tab">clasificacion</param>
+			<param name="namespace">/torneo</param>
+			<param name="id">${idtorneo}</param>
+		</result>
+	</action>
+	<action name="ConfirmarResultadoEquipo" method="ConfirmarResultado"
+			class="com.proyecto.actions.PartidoEquiposAction">
+		<result type="redirectAction">
+			<param name="actionName">ComprobarPartidosJornadaConfirmados</param>
+			<param name="namespace">/torneo</param>
+			<param name="id">${idtorneo}</param>
+		</result>
+		<result name="finalizado" type="redirectAction">
+			<param name="actionName">GoCalendario</param>
+			<param name="namespace">/torneo</param>
+			<param name="id">${idtorneo}</param>
+		</result>		
+	</action>	
+
+</package>
+ 
+</struts>

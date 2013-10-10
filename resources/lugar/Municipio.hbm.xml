@@ -1,0 +1,21 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated 03-nov-2011 18:44:50 by Hibernate Tools 3.4.0.CR1 -->
+<hibernate-mapping>
+    <class name="com.proyecto.dominio.Municipio" table="MUNICIPIO">
+        <cache usage="nonstrict-read-write"/>
+        <id name="id" type="int">
+            <column name="ID" />
+            <generator class="assigned" />
+        </id>
+        <property name="nombre" type="java.lang.String">
+            <column name="NOMBRE" />
+        </property>
+        <many-to-one column="idprovincia" name="parentProvincia"/>
+        <set name="usuarios" inverse="true" order-by="id">
+             <key column="idmunicipio"/>
+             <one-to-many class="com.proyecto.dominio.User"/>
+  		</set>
+    </class>
+</hibernate-mapping>

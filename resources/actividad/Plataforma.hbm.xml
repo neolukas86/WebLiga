@@ -1,0 +1,42 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated 12-mar-2012 18:54:39 by Hibernate Tools 3.4.0.CR1 -->
+<hibernate-mapping>
+    <class name="com.proyecto.dominio.Plataforma" table="PLATAFORMA">
+    	<cache usage="nonstrict-read-write"/>
+  		<id name="id" type="int">
+   			<column name="ID"/>
+   			<generator class="increment"/>
+  		</id>
+  		
+  		<property lazy="false" name="nombre" type="java.lang.String">
+   			<column name="NOMBRE" not-null="true" unique="true"/>
+  		</property>
+  		
+        <property name="rutaimagen" type="java.lang.String">
+   			<column name="RUTAIMAGEN"/>
+   		</property>
+		
+  		<set inverse="true" name="torneos" order-by="id">
+   			<key column="idplataforma"/>
+   			<one-to-many class="com.proyecto.dominio.Torneo"/>
+ 	 	</set>		
+		
+		<set name="comunidades" table="PLATAFORMA_COM" > <!-- Hay que ver si poner aqui inverse="true" -->
+			<key column="idplataforma" />
+			<many-to-many column="idcomunidad"  class="com.proyecto.dominio.Comunidad" />
+		</set>
+  		
+  		<set inverse="true" name="userPlataformas" order-by="idusuario">
+   			<key column="idplataforma"/>
+   			<one-to-many class="com.proyecto.dominio.UserPlataforma"/>
+ 	 	</set>
+		
+  		<set name="equipos" sort="unsorted" table="EQUIPO_PLATAFORMA">
+   			<!-- Hay que ver si poner aqui inverse="true" -->
+   			<key column="idplataforma"/>
+   			<many-to-many class="com.proyecto.dominio.Equipo" column="idequipo" unique="false"/>
+  		</set>
+    </class>
+</hibernate-mapping>

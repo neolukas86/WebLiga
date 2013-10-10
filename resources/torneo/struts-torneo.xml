@@ -1,0 +1,571 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC
+"-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"
+"http://struts.apache.org/dtds/struts-2.0.dtd">
+ 
+<struts>
+ 
+<package name="torneo" extends="default">
+	
+	<action name="VerTorneo"
+			class="com.proyecto.actions.TorneoAction">
+		<result name="success">/WEB-INF/pages/TorneoTabbedPanel.jsp</result>
+		<result name="error" type="redirectAction">
+			<param name="actionName">VolverIndex</param>
+			<param name="namespace">/web</param>
+		</result>
+	</action>
+	<action name="TorneoDisplay" method="GoInfoTorneo"
+			class="com.proyecto.actions.TorneoAction">
+		<result name="success">/WEB-INF/pages/Torneo.jsp</result>
+		<result name="error">/WEB-INF/pages/TorneoTabbedPanel.jsp</result>
+	</action>	
+	<action name="GoAdminTorneos" method="GoAdminTorneos"
+			class="com.proyecto.actions.TorneoAction">
+			<result name="success">/WEB-INF/pages/admin/superadministrador/TorneosAdmin.jsp</result>
+	</action>
+	<action name="EstadisticasTorneo" method="EstadisticasTorneo"
+			class="com.proyecto.actions.TorneoAction">
+		<result name="success">/WEB-INF/pages/estadisticas/torneo/EstadisticasAdminTorneo.jsp</result>
+	</action>	
+	<action name="GoPartidos" method="GoPartidos"
+			class="com.proyecto.actions.TorneoAction">
+		<result name="success">/WEB-INF/pages/Partidos.jsp</result>
+		<result name="error">/WEB-INF/pages/TorneoTabbedPanel.jsp</result>
+		<result name="input">/WEB-INF/pages/TorneoTabbedPanel.jsp</result>		
+	</action>
+	
+	<action name="GoAbandonarTorneo" method="GoAbandonar"
+			class="com.proyecto.actions.TorneoAction">
+		<result name="success">/WEB-INF/pages/abandono/AbandonarTorneo.jsp</result>
+		<result name="error">/WEB-INF/pages/TorneoTabbedPanel.jsp</result>
+		<result name="input">/WEB-INF/pages/TorneoTabbedPanel.jsp</result>		
+	</action>	
+	<action name="GoClasificacion" method="GoClasificacion"
+			class="com.proyecto.actions.TorneoAction">
+		<result name="success">/WEB-INF/pages/Clasificacion.jsp</result>
+		<result name="error">/WEB-INF/pages/TorneoTabbedPanel.jsp</result>
+		<result name="input">/WEB-INF/pages/TorneoTabbedPanel.jsp</result>		
+	</action>
+	<action name="GoUsuariosTorneo" method="GoAdminUsuariosTorneo"
+			class="com.proyecto.actions.TorneoAction">
+		<result name="success">/WEB-INF/pages/admin/torneo/UsuariosTorneo.jsp</result>
+		<result name="error">/WEB-INF/pages/admin/torneo/TorneoSettings.jsp</result>
+		<result name="input">/WEB-INF/pages/admin/torneo/TorneoSettings.jsp</result>
+	</action>
+	<action name="GoEquiposTorneo" method="GoAdminEquiposTorneo"
+			class="com.proyecto.actions.TorneoAction">
+		<result name="success">/WEB-INF/pages/admin/torneo/EquiposTorneo.jsp</result>
+		<result name="error">/WEB-INF/pages/admin/torneo/TorneoSettings.jsp</result>
+		<result name="input">/WEB-INF/pages/admin/torneo/TorneoSettings.jsp</result>
+	</action>	
+	<action name="GoNoticiasTorneo" method="GoNoticiasTorneo"
+			class="com.proyecto.actions.TorneoAction">
+		<result name="success">/WEB-INF/pages/noticias/Noticias.jsp</result>
+		<result name="error">/WEB-INF/pages/TorneoTabbedPanel.jsp</result>
+		<result name="input">/WEB-INF/pages/TorneoTabbedPanel.jsp</result>
+	</action>
+	<action name="GoAdminTorneo" method="GoAdminTorneo"
+			class="com.proyecto.actions.TorneoAction">
+		<result name="success">/WEB-INF/pages/admin/torneo/AdminTorneoTabbedPanel.jsp</result>
+		<result name="error">/WEB-INF/pages/TorneoTabbedPanel.jsp</result>
+		<result name="input">/WEB-INF/pages/TorneoTabbedPanel.jsp</result>
+	</action>
+	<action name="GoSettingsTorneo" method="GoSettings"
+			class="com.proyecto.actions.TorneoAction">
+		<result name="success">/WEB-INF/pages/admin/torneo/TorneoSettings.jsp</result>
+		<result name="error">/WEB-INF/pages/AdminTorneoTabbedPanel.jsp</result>
+		<result name="input">/WEB-INF/pages/AdminTorneoTabbedPanel.jsp</result>
+	</action>	
+	<action name="GoEstadisticasTorneoPanel" method="GoEstadisticas"
+			class="com.proyecto.actions.TorneoAction">
+		<result name="success">/WEB-INF/pages/estadisticas/torneo/EstadisticasTorneoTabbedPanel.jsp</result>
+		<result name="error">/WEB-INF/pages/TorneoTabbedPanel.jsp</result>
+		<result name="input">/WEB-INF/pages/TorneoTabbedPanel.jsp</result>
+	</action>
+	<action name="GoEstadisticasTorneo" method="GoEstadisticasTorneo"
+			class="com.proyecto.actions.TorneoAction">
+		<result name="success">/WEB-INF/pages/estadisticas/torneo/EstadisticasTorneo.jsp</result>
+		<result name="error">/WEB-INF/pages/TorneoTabbedPanel.jsp</result>
+		<result name="input">/WEB-INF/pages/TorneoTabbedPanel.jsp</result>
+	</action>
+	<action name="GoEstadisticasUsuariosTorneo" method="GoEstadisticasUsuario"
+			class="com.proyecto.actions.TorneoAction">
+		<result name="success">/WEB-INF/pages/estadisticas/torneo/EstadisticasUsuariosTorneo.jsp</result>
+		<result name="error">/WEB-INF/pages/TorneoTabbedPanel.jsp</result>
+		<result name="input">/WEB-INF/pages/TorneoTabbedPanel.jsp</result>
+	</action>
+	<action name="GoEstadisticasEquiposTorneo" method="GoEstadisticasEquipo"
+			class="com.proyecto.actions.TorneoAction">
+		<result name="success">/WEB-INF/pages/estadisticas/torneo/EstadisticasEquiposTorneo.jsp</result>
+		<result name="error">/WEB-INF/pages/TorneoTabbedPanel.jsp</result>
+		<result name="input">/WEB-INF/pages/TorneoTabbedPanel.jsp</result>
+	</action>
+	<action name="VerEstadisticasTorneo" method="VerEstadisticasTorneo"
+			class="com.proyecto.actions.TorneoAction">
+		<result name="partidosConfirmados">/WEB-INF/pages/estadisticas/torneo/PartidosConfirmados.jsp</result>
+		<result name="tantos">/WEB-INF/pages/estadisticas/torneo/Tantos.jsp</result>
+		<result name="input">/WEB-INF/pages/TorneoTabbedPanel.jsp</result>
+		<result name="error">/WEB-INF/pages/TorneoTabbedPanel.jsp</result>
+	</action>
+	<action name="VerEstadisticasUsuarioTorneo" method="VerEstadisticasUsuarioTorneo"
+			class="com.proyecto.actions.TorneoAction">
+		<result name="partidos">/WEB-INF/pages/estadisticas/torneo/PartidosConfirmados.jsp</result>
+		<result name="tantos">/WEB-INF/pages/estadisticas/torneo/TantosUsuario.jsp</result>
+		<result name="input">/WEB-INF/pages/TorneoTabbedPanel.jsp</result>
+		<result name="error">/WEB-INF/pages/TorneoTabbedPanel.jsp</result>
+	</action>	
+	<action name="GoPasswordTorneo" method="GoPasswordTorneo"
+			class="com.proyecto.actions.TorneoAction">
+		<result name="success">/WEB-INF/pages/admin/torneo/PasswordTorneo.jsp</result>
+		<result name="error">/WEB-INF/pages/admin/torneo/TorneoSettings.jsp</result>
+		<result name="input">/WEB-INF/pages/admin/torneo/TorneoSettings.jsp</result>
+	</action>
+	<action name="PasswordTorneo" method="CambiarPassword"
+			class="com.proyecto.actions.TorneoAction">
+		<result type="redirectAction">
+			<param name="actionName">VerTorneo</param>
+			<param name="id">${id}</param>
+		</result>
+		<result name="error" type="redirectAction">
+			<param name="actionName">VerTorneo</param>
+			<param name="tab">admin</param>
+			<param name="subTab">password</param>
+			<param name="id">${id}</param>
+		</result>
+		<result name="input" type="redirectAction">
+			<param name="actionName">VerTorneo</param>
+			<param name="tab">admin</param>
+			<param name="subTab">password</param>
+			<param name="id">${id}</param>
+		</result>					
+	</action>
+		<action name="ConfirmacionRegistroTorneo" method="CambiarConfirmacion"
+			class="com.proyecto.actions.TorneoAction">
+		<result type="redirectAction">
+			<param name="actionName">VerTorneo</param>
+			<param name="id">${id}</param>
+		</result>					
+	</action>
+	<action name="CambiarJornadasJugables" method="CambiarJornadasJugables"
+			class="com.proyecto.actions.TorneoAction">
+		<result type="redirectAction">
+			<param name="actionName">VerTorneo</param>
+			<param name="id">${id}</param>
+			<param name="tab">partidos</param>
+		</result>					
+	</action>	
+	<action name="EditarRangoTorneo" method="EditarRango"
+			class="com.proyecto.actions.TorneoAction">
+		<result type="redirectAction">
+			<param name="actionName">VerTorneo</param>
+			<param name="tab">admin</param>
+			<param name="subTab">usuarios</param>
+			<param name="id">${id}</param>
+		</result>					
+	</action>	
+	<action name="GoEliminarTorneo" method="GoAdminTorneo"
+			class="com.proyecto.actions.TorneoAction">
+		<result name="success">/WEB-INF/pages/admin/torneo/EliminarTorneo.jsp</result>
+		<result name="error">/WEB-INF/pages/TorneoTabbedPanel.jsp</result>
+		<result name="input">/WEB-INF/pages/TorneoTabbedPanel.jsp</result>			
+	</action>
+	<action name="EliminarTorneo" method="ComprobarPermisoBorrado"
+			class="com.proyecto.actions.TorneoAction">
+		<result name="success" type="redirectAction">
+			<param name="actionName">EliminarInvitadosTorneo</param>
+			<param name="id">${id}</param>
+		</result>
+		<result name="error">/WEB-INF/pages/TorneoTabbedPanel.jsp</result>
+		<result name="input">/WEB-INF/pages/TorneoTabbedPanel.jsp</result>			
+	</action>
+	<action name="EliminarInvitadosTorneo" method="EliminarInvitados"
+			class="com.proyecto.actions.TorneoAction">
+		<result name="success" type="redirectAction">
+			<param name="actionName">EliminarTorneoBBDD</param>
+			<param name="id">${id}</param>
+		</result>
+		<result name="error">/WEB-INF/pages/TorneoTabbedPanel.jsp</result>
+		<result name="input">/WEB-INF/pages/TorneoTabbedPanel.jsp</result>				
+	</action>
+	<action name="EliminarTorneoBBDD" method="delete"
+			class="com.proyecto.actions.TorneoAction">
+		<result name="success" type="redirectAction">
+			<param name="actionName">VolverIndex</param>
+			<param name="namespace">/web</param>
+		</result>
+		<result name="error">/WEB-INF/pages/TorneoTabbedPanel.jsp</result>
+		<result name="input">/WEB-INF/pages/TorneoTabbedPanel.jsp</result>			
+	</action>	
+	<action name="GoRegisterTorneo" method="GoRegister"
+			class="com.proyecto.actions.TorneoAction">
+		<interceptor-ref name="store">
+       		<param name="operationMode">RETRIEVE</param>
+    	</interceptor-ref>
+    	<interceptor-ref name="stack-with-login"/>
+		<result>/WEB-INF/pages/register/Register_torneo.jsp</result>
+		<result name="error">/WEB-INF/pages/register/Register_torneo.jsp</result>
+		<result name="input">/WEB-INF/pages/register/Register_torneo.jsp</result>
+	</action>
+	<action name="RegisterTorneo" method="merge"
+			class="com.proyecto.actions.TorneoAction">
+		<interceptor-ref name="store">
+       		<param name="operationMode">STORE</param>
+    	</interceptor-ref>
+    	<interceptor-ref name="stack-with-login"/>			
+			<result name="success" type="redirectAction">
+				<param name="actionName">VerTorneo</param>
+				<param name="id">${id}</param>
+			</result>
+			<result name="error" type="redirectAction">
+				<param name="actionName">VerComunidad</param>
+				<param name="namespace">/comunidad</param>
+				<param name="id">${idcom}</param>
+				<param name="tab">regTorneo</param>
+			</result>
+			<result name="input" type="redirectAction">
+				<param name="actionName">VerComunidad</param>
+				<param name="namespace">/comunidad</param>
+				<param name="id">${idcom}</param>
+				<param name="tab">regTorneo</param>
+			</result>
+	</action>
+	<action name="GoRequestsTorneo" method="GoRequests"
+			class="com.proyecto.actions.TorneoAction">
+		<result name="success">/WEB-INF/pages/admin/torneo/SolicitudesTorneo.jsp</result>
+		<result name="error">/WEB-INF/pages/Torneo.jsp</result>
+		<result name="input">/WEB-INF/pages/Torneo.jsp</result>			
+	</action>
+	<action name="AceptarUserRequestTorneo" method="AceptarUserRequest"
+			class="com.proyecto.actions.TorneoAction">
+		<result type="redirectAction">
+			<param name="actionName">VerTorneo</param>
+			<param name="tab">admin</param>
+			<param name="subTab">requests</param>
+			<param name="id">${id}</param>
+		</result>			
+	</action>
+	<action name="DenegarUserRequestTorneo" method="DenegarUserRequest"
+			class="com.proyecto.actions.TorneoAction">
+		<result type="redirectAction">
+			<param name="actionName">VerTorneo</param>
+			<param name="tab">admin</param>
+			<param name="subTab">requests</param>
+			<param name="id">${id}</param>
+		</result>		
+	</action>
+	<action name="AceptarEquipoRequestTorneo" method="AceptarEquipoRequest"
+			class="com.proyecto.actions.TorneoAction">
+		<result type="redirectAction">
+			<param name="actionName">VerTorneo</param>
+			<param name="tab">admin</param>
+			<param name="subTab">requests</param>
+			<param name="id">${id}</param>
+		</result>			
+	</action>
+	<action name="DenegarEquipoRequestTorneo" method="DenegarEquipoRequest"
+			class="com.proyecto.actions.TorneoAction">
+		<result type="redirectAction">
+			<param name="actionName">VerTorneo</param>
+			<param name="tab">admin</param>
+			<param name="subTab">requests</param>
+			<param name="id">${id}</param>
+		</result>		
+	</action>	
+	<action name="BanearUsuarioTorneo" method="BanearUsuario"
+			class="com.proyecto.actions.TorneoAction">
+		<result type="redirectAction">
+			<param name="actionName">VerTorneo</param>
+			<param name="tab">admin</param>
+			<param name="subTab">usuarios</param>
+			<param name="id">${id}</param>
+		</result>			
+	</action>
+	<action name="BanearEquipoTorneo" method="BanearEquipo"
+			class="com.proyecto.actions.TorneoAction">
+		<result type="redirectAction">
+			<param name="actionName">VerTorneo</param>
+			<param name="tab">admin</param>
+			<param name="subTab">equipos</param>
+			<param name="id">${id}</param>
+		</result>			
+	</action>		
+	<action name="ExpulsarUsuarioTorneo" method="ExpulsarUsuario"
+			class="com.proyecto.actions.TorneoAction">
+		<result type="redirectAction">
+			<param name="actionName">VerTorneo</param>
+			<param name="tab">admin</param>
+			<param name="subTab">usuarios</param>
+			<param name="id">${id}</param>
+		</result>			
+	</action>
+	<action name="ExpulsarEquipoTorneo" method="ExpulsarEquipo"
+			class="com.proyecto.actions.TorneoAction">
+		<result type="redirectAction">
+			<param name="actionName">VerTorneo</param>
+			<param name="tab">admin</param>
+			<param name="subTab">equipos</param>
+			<param name="id">${id}</param>
+		</result>			
+	</action>
+
+	<action name="GoSortearTorneo" method="GoSorteoTorneo"
+			class="com.proyecto.actions.TorneoAction">
+		<result name="success">/WEB-INF/pages/admin/torneo/SortearTorneo.jsp</result>
+		<result name="error">/WEB-INF/pages/TorneoTabbedPanel.jsp</result>
+		<result name="input">/WEB-INF/pages/TorneoTabbedPanel.jsp</result>			
+	</action>	
+	<action name="SortearTorneo" method="Sortear"
+			class="com.proyecto.actions.TorneoAction">
+			<result type="redirectAction">
+				<param name="actionName">VerTorneo</param>
+				<param name="tab">calendario</param>
+				<param name="id">${id}</param>
+			</result>
+			<result name="error" type="redirectAction">
+			<param name="actionName">VolverIndex</param>
+			<param name="namespace">/web</param>
+		</result>
+			<result name="input" type="redirectAction">
+			<param name="actionName">VolverIndex</param>
+			<param name="namespace">/web</param>
+		</result>		
+	</action>
+	<action name="GoCalendario" method="GoCalendario"
+			class="com.proyecto.actions.TorneoAction">
+		<result name="success">/WEB-INF/pages/Calendario.jsp</result>
+		<result name="error">/WEB-INF/pages/TorneoTabbedPanel.jsp</result>
+		<result name="input">/WEB-INF/pages/TorneoTabbedPanel.jsp</result>			
+	</action>
+	<action name="IrAJornada" method="IrAJornada"
+			class="com.proyecto.actions.TorneoAction">
+		<result name="success">/WEB-INF/pages/display/torneo/CalendarioDisplay.jsp</result>
+		<result name="error">/WEB-INF/pages/TorneoTabbedPanel.jsp</result>
+		<result name="input">/WEB-INF/pages/TorneoTabbedPanel.jsp</result>			
+	</action>	
+	<action name="GoJoinTorneo" method="GoUnirseTorneo"
+			class="com.proyecto.actions.TorneoAction">
+		<result name="success">/WEB-INF/pages/join/UnirseTorneo.jsp</result>
+		<result name="error">/WEB-INF/pages/Torneo.jsp</result>
+		<result name="input">/WEB-INF/pages/Torneo.jsp</result>
+	</action>	
+	<action name="JoinTorneo" method="UnirseTorneo"
+			class="com.proyecto.actions.TorneoAction">
+		<result type="redirectAction">
+			<param name="actionName">VerTorneo</param>
+			<param name="id">${id}</param>
+		</result>	
+	</action>
+	<action name="JoinTorneoPassword" method="UnirseTorneoPassword"
+			class="com.proyecto.actions.TorneoAction">
+		<result type="redirectAction">
+			<param name="actionName">JoinTorneo</param>
+			<param name="id">${id}</param>
+		</result>
+		<result name="error" type="redirectAction">
+			<param name="actionName">VerTorneo</param>
+			<param name="id">${id}</param>
+		</result>
+		<result name="input" type="redirectAction">
+			<param name="actionName">VerTorneo</param>
+			<param name="id">${id}</param>
+		</result>		
+	</action>
+	<action name="JoinRequestTorneo" method="RequestTorneo"
+			class="com.proyecto.actions.TorneoAction">
+		<result type="redirectAction">
+			<param name="actionName">VerTorneo</param>
+			<param name="id">${id}</param>
+		</result>
+		<result name="error" type="redirectAction">
+			<param name="actionName">VerTorneo</param>
+			<param name="id">${id}</param>
+		</result>
+		<result name="input" type="redirectAction">
+			<param name="actionName">VerTorneo</param>
+			<param name="id">${id}</param>
+		</result>		
+	</action>	
+	<action name="JoinRequestTorneoPassword" method="RequestTorneoPassword"
+			class="com.proyecto.actions.TorneoAction">
+		<result type="redirectAction">
+			<param name="actionName">VerTorneo</param>
+			<param name="id">${id}</param>
+		</result>
+		<result name="error">/WEB-INF/pages/join/UnirseTorneo.jsp</result>
+		<result name="input">/WEB-INF/pages/join/UnirseTorneo.jsp</result>		
+	</action>		
+	<action name="AbrirRegistrosTorneo" method="AbrirRegistros"
+			class="com.proyecto.actions.TorneoAction">
+		<result type="redirectAction">
+			<param name="actionName">VerTorneo</param>
+			<param name="id">${id}</param>
+		</result>
+		<result name="error">/WEB-INF/pages/admin/torneo/PasswordTorneo.jsp</result>
+		<result name="error">/WEB-INF/pages/admin/torneo/PasswordTorneo.jsp</result>
+	</action>
+	<action name="CerrarRegistrosTorneo" method="CerrarRegistros"
+			class="com.proyecto.actions.TorneoAction">
+		<result type="redirectAction">
+			<param name="actionName">VerTorneo</param>
+			<param name="id">${id}</param>
+		</result>
+		<result name="error">/WEB-INF/pages/admin/torneo/PasswordTorneo.jsp</result>
+		<result name="error">/WEB-INF/pages/admin/torneo/PasswordTorneo.jsp</result>
+	</action>	
+	<action name="SalirDeTorneo" method="QuitarseTorneo"
+			class="com.proyecto.actions.TorneoAction">
+<!-- 		<interceptor-ref name="prepare"> -->
+<!-- 			<param name="alwaysInvokePrepare">false</param> -->
+<!-- 		</interceptor-ref>			 -->
+		<result  type="redirectAction">
+			<param name="actionName">VolverIndex</param>
+			<param name="namespace">/web</param>
+		</result>
+	</action>
+	<action name="ListarTorneo" method="TorneoList"
+			class="com.proyecto.actions.TorneoAction">
+<!-- 		<interceptor-ref name="prepare"> -->
+<!-- 			<param name="alwaysInvokePrepare">false</param> -->
+<!-- 		</interceptor-ref>			 -->
+			<result name="success">/WEB-INF/pages/Torneos.jsp</result>
+			<result name="error" type="redirectAction">
+			<param name="actionName">VolverIndex</param>
+			<param name="namespace">/web</param>
+		</result>
+	</action>
+	<action name="ListarTorneosPropios" method="TorneoListPropios"
+			class="com.proyecto.actions.TorneoAction">
+			<result name="success">/WEB-INF/pages/Torneos.jsp</result>
+			<result name="error" type="redirectAction">
+			<param name="actionName">VolverIndex</param>
+			<param name="namespace">/web</param>
+		</result>
+	</action>
+	<action name="GoSearchTorneo" method="GoSearch"
+			class="com.proyecto.actions.TorneoAction">
+		<result name="success">/WEB-INF/pages/buscadores/BuscadorTorneo.jsp</result>
+		<result name="error" type="redirectAction">
+			<param name="actionName">VolverIndex</param>
+			<param name="namespace">/web</param>
+		</result>
+	</action>
+	<action name="SearchTorneo" method="BuscarTorneo"
+			class="com.proyecto.actions.TorneoAction">
+		<result name="success">/WEB-INF/pages/display/torneo/TorneosDisplaySearch.jsp</result>
+		<result name="error" type="redirectAction">
+			<param name="actionName">VolverIndex</param>
+			<param name="namespace">/web</param>
+		</result>
+		<result name="input" type="redirectAction">
+			<param name="actionName">VolverIndex</param>
+			<param name="namespace">/web</param>
+		</result>
+	</action>
+	<action name="ModificarSettingsTorneo" method="ModificarSettings"
+			class="com.proyecto.actions.TorneoAction">
+		<result name="success" type="redirectAction">
+			<param name="actionName">VerTorneo</param>
+			<param name="id">${id}</param>
+		</result>
+		<result name="error">/WEB-INF/pages/AdminTorneoTabbedPanel.jsp</result>
+		<result name="input">/WEB-INF/pages/AdminTorneoTabbedPanel.jsp</result>
+	</action>
+		<action name="CrearInvitadoUsuario" method="CrearInvitadoUser"
+			class="com.proyecto.actions.TorneoAction">
+		<result type="redirectAction">
+			<param name="actionName">CrearInvitado</param>
+			<param name="alias">${cadena}</param>
+			<param name="idtorneo">${id}</param>
+		</result>
+		<result name="error">/WEB-INF/pages/AdminTorneoTabbedPanel.jsp</result>
+		<result name="input">/WEB-INF/pages/AdminTorneoTabbedPanel.jsp</result>			
+	</action>
+			<action name="CrearInvitadoTeam" method="CrearInvitadoEquipo"
+			class="com.proyecto.actions.TorneoAction">
+		<result type="redirectAction">
+			<param name="actionName">CrearInvitadoEquipo</param>
+			<param name="nombre">${cadena}</param>
+			<param name="idtorneo">${id}</param>
+		</result>
+		<result name="error">/WEB-INF/pages/AdminTorneoTabbedPanel.jsp</result>
+		<result name="input">/WEB-INF/pages/AdminTorneoTabbedPanel.jsp</result>			
+	</action>
+	<action name="UnirInvitadoUsuario" method="UnirInvitadoUser"
+			class="com.proyecto.actions.TorneoAction">
+		<result type="redirectAction">
+			<param name="actionName">VerTorneo</param>
+			<param name="tab">admin</param>
+			<param name="subTab">usuarios</param>
+			<param name="id">${id}</param>
+		</result>
+		<result name="error">/WEB-INF/pages/AdminTorneoTabbedPanel.jsp</result>
+		<result name="input">/WEB-INF/pages/AdminTorneoTabbedPanel.jsp</result>			
+	</action>
+	<action name="UnirInvitadoEquipo" method="UnirInvitadoEquipo"
+			class="com.proyecto.actions.TorneoAction">
+		<result type="redirectAction">
+			<param name="actionName">VerTorneo</param>
+			<param name="tab">admin</param>
+			<param name="subTab">equipos</param>
+			<param name="id">${id}</param>
+		</result>
+		<result name="error">/WEB-INF/pages/AdminTorneoTabbedPanel.jsp</result>
+		<result name="input">/WEB-INF/pages/AdminTorneoTabbedPanel.jsp</result>			
+	</action>	
+	
+	<action name="SacarRangoUsuarioTorneo" method="SacarRangoUsuario"
+			class="com.proyecto.actions.TorneoAction">
+	</action>
+	
+	<action name="EmpezarTorneo" method="EmpezarTorneo"
+			class="com.proyecto.actions.TorneoAction">
+		<result type="redirectAction">
+			<param name="actionName">VerTorneo</param>
+			<param name="tab">calendario</param>
+			<param name="id">${id}</param>
+		</result>
+		<result name="error">/WEB-INF/pages/TorneoTabbedPanel.jsp</result>
+		<result name="input">/WEB-INF/pages/TorneoTabbedPanel.jsp</result>			
+	</action>
+	
+	<action name="PasarJornadas" method="PasarJornadas"
+			class="com.proyecto.actions.TorneoAction">
+		<result type="redirectAction">
+			<param name="actionName">VerTorneo</param>
+			<param name="tab">partidos</param>
+			<param name="id">${id}</param>
+		</result>
+		<result name="copa" type="redirectAction">
+			<param name="actionName">SortearTorneo</param>
+			<param name="auto">si</param>
+			<param name="id">${id}</param>
+		</result>
+		<result name="error">/WEB-INF/pages/TorneoTabbedPanel.jsp</result>
+		<result name="input">/WEB-INF/pages/TorneoTabbedPanel.jsp</result>			
+	</action>
+	
+	<action name="ComprobarPartidosJornadaConfirmados" method="ComprobarPartidosJornadaConfirmados"
+			class="com.proyecto.actions.TorneoAction">
+		<result type="redirectAction">
+			<param name="actionName">PasarJornadas</param>
+			<param name="auto">si</param>
+			<param name="id">${id}</param>
+			<param name="tab">partidos</param>
+		</result>
+		<result name="incompleto" type="redirectAction">
+			<param name="actionName">VerTorneo</param>
+			<param name="id">${id}</param>
+			<param name="tab">partidos</param>
+		</result>
+		<result name="error" type="redirectAction">
+			<param name="actionName">VerTorneo</param>
+			<param name="id">${id}</param>
+			<param name="tab">partidos</param>
+		</result>
+	</action>
+	
+	
+</package>
+ 
+</struts>

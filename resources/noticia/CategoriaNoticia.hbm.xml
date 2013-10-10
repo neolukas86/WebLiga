@@ -1,0 +1,43 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated 18-jul-2012 19:16:44 by Hibernate Tools 3.4.0.CR1 -->
+<hibernate-mapping>
+    <class name="com.proyecto.dominio.CategoriaNoticia" table="CATEGORIA_NOTICIA">
+        <id name="id" type="int">
+            <column name="ID" />
+            <generator class="increment" />
+        </id>
+        <property name="nombre" type="java.lang.String">
+            <column name="NOMBRE" />
+        </property>
+        <property name="titulo_ES" type="java.lang.String">
+            <column name="titulo_ES" />
+        </property>
+        <property name="titulo_CA" type="java.lang.String">
+            <column name="titulo_CA" />
+        </property>
+        <property name="titulo_EN" type="java.lang.String">
+            <column name="titulo_EN" />
+        </property>
+        <property name="mensaje_ES" type="java.lang.String">
+            <column name="mensaje_ES" />
+        </property>
+        <property name="mensaje_EN" type="java.lang.String">
+            <column name="mensaje_EN" />
+        </property>
+        <property name="mensaje_CA" type="java.lang.String">
+            <column name="mensaje_CA" />
+        </property>
+        <property name="ppioMensaje" type="java.lang.Boolean">
+            <column name="PPIOMENSAJE" />
+        </property>
+        <property name="finalMensaje" type="java.lang.Boolean">
+            <column name="FINALMENSAJE" />
+        </property>
+        <set inverse="true" name="noticias" order-by="fechaPublicacion">
+   			<key column="idcategoria"/>
+  			<one-to-many class="com.proyecto.dominio.Noticia"/>
+  		</set>
+    </class>
+</hibernate-mapping>

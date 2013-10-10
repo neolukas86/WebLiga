@@ -1,0 +1,72 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+                                   "http://hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping>
+ <class name="com.proyecto.dominio.Comunidad" table="COMUNIDAD">
+  <id name="id" type="int">
+   <column name="ID"/>
+   <generator class="increment"/>
+  </id>
+  <property generated="never" lazy="false" name="nombre" type="java.lang.String">
+   <column name="NOMBRE" not-null="true" unique="true"/>
+  </property>
+  <property generated="never" lazy="false" name="fechaCreacion" type="java.sql.Date">
+   <column default="CURRENT_TIMESTAMP" name="FECHACREACION" sql-type="TIMESTAMP"/>
+  </property>
+  <property generated="never" lazy="false" name="usuariosMax" type="int">
+   <column default="0" name="USUARIOSMAX" not-null="true"/>
+  </property>
+  <property generated="never" lazy="false" name="torneosActivosMax" type="int">
+   <column default="0" name="TORNEOSACTIVOSMAX" not-null="true"/>
+  </property>
+  <property generated="never" lazy="false" name="torneosEnRegistroMax" type="int">
+   <column default="0" name="TORNEOSENREGISTROMAX" not-null="true"/>
+  </property>
+  <property generated="never" lazy="false" name="torneosMax" type="int">
+   <column default="0" name="TORNEOSMAX" not-null="true"/>
+  </property>
+  <property generated="never" lazy="false" name="passwordProtected" type="boolean">
+   <column default="0" name="PASSWORDPROTECTED" not-null="true"/>
+  </property>
+  <property generated="never" lazy="false" name="joinPassword" type="java.lang.String">
+   <column name="JOINPASSWORD" not-null="false"/>
+  </property>
+  
+  <property generated="never" lazy="false" name="regRequest" type="boolean">
+   <column default="0" name="REGREQUEST" not-null="true"/>
+  </property>
+  
+  <set inverse="true" name="userComunidades" order-by="idusuario" sort="unsorted">
+   <key column="idcomunidad" not-null="true"/>
+   <one-to-many class="com.proyecto.dominio.UserComunidad"/>
+  </set>
+   <set inverse="true" name="equipoComunidades" order-by="idequipo" sort="unsorted">
+   <key column="idcomunidad" not-null="true"/>
+   <one-to-many class="com.proyecto.dominio.EquipoComunidad"/>
+  </set>
+  <set inverse="true" name="torneos" order-by="id" sort="unsorted">
+   <key column="idcomunidad" not-null="true"/>
+   <one-to-many class="com.proyecto.dominio.Torneo"/>
+  </set>
+
+  <set name="actividades" sort="unsorted" table="ACTIVIDAD_COM" lazy="false">
+   <key column="idcomunidad"/>
+   <many-to-many class="com.proyecto.dominio.Actividad"
+    column="idactividad" unique="false"/>
+  </set>
+  <set name="plataformas" sort="unsorted" table="PLATAFORMA_COM" lazy="false">
+   <key column="idcomunidad"/>
+   <many-to-many class="com.proyecto.dominio.Plataforma"
+    column="idplataforma" unique="false"/>
+  </set>
+  <set name="usuariosRequest" sort="unsorted" table="REQUEST_USUARIO_COM">
+   <key column="idcomunidad"/>
+   <many-to-many column="idusuario" class="com.proyecto.dominio.User"/>
+  </set>
+    <set name="equiposRequest" sort="unsorted" table="REQUEST_EQUIPO_COM">
+   <key column="idcomunidad"/>
+   <many-to-many column="idequipo" class="com.proyecto.dominio.Equipo"/>
+  </set>
+ </class>
+</hibernate-mapping>

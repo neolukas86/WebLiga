@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC
+"-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"
+"http://struts.apache.org/dtds/struts-2.0.dtd">
+ 
+<struts>
+ 
+<package name="lugar" extends="json-default">
+	<action name="listarPaises" class="com.proyecto.actions.JSONDataAction" method="listarPaises">
+    	<result type="json"/>
+    </action>
+    	<action name="listarRegionesByPais" class="com.proyecto.actions.JSONDataAction" method="listarRegionesByPais">
+    	<result type="json"/>
+    </action>
+    <action name="listarProvinciasByRegion" class="com.proyecto.actions.JSONDataAction" method="listarProvinciasByRegion">
+    	<result type="json"/>
+    </action>
+	<action name="listarProvinciasByPais" class="com.proyecto.actions.JSONDataAction" method="listarProvinciasByPais">
+    	<result type="json"/>
+    </action>
+    <action name="listarMunicipiosByProvincia" class="com.proyecto.actions.JSONDataAction" method="listarMunicipiosByProvincia">
+    	<result type="json"/>
+    </action>
+    <action name="listarMunicipiosByProvinciaNull" class="com.proyecto.actions.JSONDataAction" method="listarMunicipiosByProvinciaNull">
+    	<result type="json"/>
+    </action>
+</package>
+ 
+</struts>

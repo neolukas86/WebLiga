@@ -1,0 +1,21 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated 12-mar-2012 19:57:11 by Hibernate Tools 3.4.0.CR1 -->
+<hibernate-mapping>
+    <class name="com.proyecto.dominio.UserActividad" table="USUARIO_ACTIVIDAD">
+
+  		<composite-id name="id" class="com.proyecto.dominio.UserActividadPK">
+  			<key-many-to-one column="idusuario" name="parentUser" />
+  			<key-many-to-one column="idactividad" name="parentActividad" />
+  		</composite-id>
+  		
+  		<property generated="never" lazy="false" name="seguido" type="java.lang.Boolean">
+   			<column name="SEGUIDO"/>
+  		</property>
+  
+    	<property generated="never" lazy="false" name="favorito" type="java.lang.Boolean">
+   			<column name="FAVORITO"/>
+ 		 </property>
+    </class>
+</hibernate-mapping>

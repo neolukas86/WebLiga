@@ -1,0 +1,112 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated 22-dic-2011 21:38:09 by Hibernate Tools 3.4.0.CR1 -->
+<hibernate-mapping>
+    <class name="com.proyecto.dominio.Equipo" table="EQUIPO">
+        <id name="id" type="int">
+            <column name="ID" />
+            <generator class="increment" />
+        </id>
+  		
+  		<property generated="never" lazy="false" name="nombre" type="java.lang.String">
+   			<column name="NOMBRE" not-null="true" unique="true"/>
+  		</property>
+  		
+  		<property generated="never" lazy="false" name="tag" type="java.lang.String">
+   			<column name="TAG" not-null="false" unique="false"/>
+  		</property>
+
+  		<property generated="never" lazy="false" name="homepage" type="java.lang.String">
+   			<column name="HOMEPAGE" not-null="false" unique="false"/>
+  		</property>
+  		
+  		<property generated="never" lazy="false" name="passwordProtected" type="boolean">
+   			<column default="0" name="PASSWORDPROTECTED" not-null="true"/>
+  		</property>
+  		
+  		<property generated="never" lazy="false" name="joinPassword" type="java.lang.String">
+   			<column name="JOINPASSWORD" not-null="false"/>
+  		</property>
+  		
+  		<property generated="never" lazy="false" name="regRequest" type="boolean">
+   			<column default="0" name="REGREQUEST" not-null="true"/>
+  		</property>
+  		
+		  <property generated="never" lazy="false" name="expulsado" type="java.lang.Boolean">
+		   <column default="false" name="EXPULSADO" not-null="true"/>
+		  </property>
+		    		
+  		<property generated="never" lazy="false" name="invitado" type="java.lang.Boolean">
+   			<column default="false" name="INVITADO" not-null="true"/>
+  		</property>
+		
+		<set name="plataformas" table="EQUIPO_PLATAFORMA" lazy="false"> <!-- Hay que ver si poner aqui inverse="true" -->
+			<key column="idequipo" />
+			<many-to-many column="idplataforma"  class="com.proyecto.dominio.Plataforma" />
+		</set>
+		
+		<set name="actividades" table="EQUIPO_ACTIVIDAD"  lazy="false"> <!-- Hay que ver si poner aqui inverse="true" -->
+			<key column="idequipo" />
+			<many-to-many column="idactividad"  class="com.proyecto.dominio.Actividad" />
+		</set>
+		
+		  <set inverse="true" name="equipoComunidades" order-by="idequipo">
+		   <key column="idequipo"/>
+		   <one-to-many class="com.proyecto.dominio.EquipoComunidad"/>
+		  </set>
+		  
+		  <set inverse="true" name="equipoTorneos" order-by="idequipo">
+		   <key column="idequipo"/>
+		   <one-to-many class="com.proyecto.dominio.EquipoTorneo"/>
+		  </set>
+
+		<set name="userEquipos" inverse="true" order-by="idequipo">
+			<key column="idequipo" />
+			<one-to-many class="com.proyecto.dominio.UserEquipo" />
+		</set>
+		
+		  <set inverse="true" name="partidosVSLocal" order-by="id">
+   			<key column="idlocal"/>
+   			<one-to-many class="com.proyecto.dominio.PartidoEquiposVersus"/>
+  		 </set>
+  		 
+  		<set inverse="true" name="partidosVSVisitante" order-by="id">
+   			<key column="idvisitante"/>
+   			<one-to-many class="com.proyecto.dominio.PartidoEquiposVersus"/>
+  		</set>
+  	
+  		<set inverse="true" name="partidosVSGanados" order-by="id">
+   			<key column="idganador"/>
+   			<one-to-many class="com.proyecto.dominio.PartidoEquiposVersus"/>
+  		</set>
+  		
+  		<set inverse="true" name="partidosVSPerdidos" order-by="id">
+   			<key column="idperdedor"/>
+   			<one-to-many class="com.proyecto.dominio.PartidoEquiposVersus"/>
+  		</set>  
+  		
+  		<set name="usuariosRequest" sort="unsorted" table="REQUEST_USUARIO_EQ">
+		   <key column="idequipo"/>
+		   <many-to-many column="idusuario" class="com.proyecto.dominio.User"/>
+		  </set>
+		  
+		  
+	  	<set name="comunidadesRequest" table="REQUEST_EQUIPO_COM" > 
+			<key column="idequipo" />
+			<many-to-many column="idcomunidad"  class="com.proyecto.dominio.Comunidad" />
+		</set>
+  		<set name="torneosRequest" table="REQUEST_EQUIPO_TOR" > 
+			<key column="idequipo" />
+			<many-to-many column="idtorneo"  class="com.proyecto.dominio.Torneo" />
+		</set>
+		<set name="invitadosRequest" table="REQUEST_EQUIPO_INVITADO" lazy="false"> 
+			<key column="idequipo" />
+			<many-to-many column="idinvitado"  class="com.proyecto.dominio.Equipo" />
+		</set>
+		<set name="equiposRequest" table="REQUEST_EQUIPO_INVITADO" lazy="false"> 
+			<key column="idinvitado" />
+			<many-to-many column="idequipo"  class="com.proyecto.dominio.Equipo" />
+		</set>	  		
+    </class>
+</hibernate-mapping>

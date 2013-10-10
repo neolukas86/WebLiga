@@ -1,0 +1,16 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated 03-ene-2012 17:01:30 by Hibernate Tools 3.4.0.CR1 -->
+<hibernate-mapping>
+    <class name="com.proyecto.dominio.UserEquipo" table="EQ_USUARIO">
+      <composite-id name="id" class="com.proyecto.dominio.UserEquipoPK">
+  		<key-many-to-one column="idusuario" name="parentUser" />
+  		<key-many-to-one column="idequipo" name="parentEquipo" />
+  	  </composite-id>
+  	  <property generated="never" lazy="false" name="rango" type="java.lang.Integer">
+   		<column name="RANGO"/>
+  	  </property> 
+
+ 	</class>
+</hibernate-mapping>

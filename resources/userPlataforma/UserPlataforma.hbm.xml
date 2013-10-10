@@ -1,0 +1,21 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated 12-mar-2012 20:00:40 by Hibernate Tools 3.4.0.CR1 -->
+<hibernate-mapping>
+    <class name="com.proyecto.dominio.UserPlataforma" table="USUARIO_PLATAFORMA">
+
+  		<composite-id name="id" class="com.proyecto.dominio.UserPlataformaPK">
+  			<key-many-to-one column="idusuario" name="parentUser" />
+  			<key-many-to-one column="idplataforma" name="parentPlataforma" />
+  		</composite-id>
+  		
+  		<property generated="never" lazy="false" name="seguido" type="java.lang.Boolean">
+   			<column name="SEGUIDO"/>
+  		</property>
+  
+    	<property generated="never" lazy="false" name="favorito" type="java.lang.Boolean">
+   			<column name="FAVORITO"/>
+ 		 </property>
+    </class>
+</hibernate-mapping>

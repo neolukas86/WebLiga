@@ -1,0 +1,56 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated 19-dic-2011 13:50:15 by Hibernate Tools 3.4.0.CR1 -->
+<hibernate-mapping>
+    <class name="com.proyecto.dominio.Actividad" table="ACTIVIDAD">
+        <cache usage="nonstrict-read-write"/>
+        <id name="id" type="int">
+            <column name="ID" />
+            <generator class="increment" />
+        </id>
+        <property name="nombre" type="java.lang.String">
+            <column name="NOMBRE" />
+        </property>
+        <property name="nombre_EN" type="java.lang.String">
+        	<column name="NOMBRE_EN" />
+        </property>
+        <property name="nombre_CA" type="java.lang.String">
+        	<column name="NOMBRE_CA" />
+        </property>
+        <property name="rutaimagen" type="java.lang.String">
+   			<column name="RUTAIMAGEN"/>
+   		</property>
+
+        <property name="ptosVictoria" type="java.lang.Integer">
+   			<column name="PTOSVICTORIA"/>
+   		</property> 
+   		<property name="empate" lazy="false" type="java.lang.Boolean">
+            <column name="EMPATE" />
+        </property>  		
+   		
+   		<set name="equipos" table="EQUIPO_ACTIVIDAD" > <!-- Hay que ver si poner aqui inverse="true" -->
+			<key column="idactividad" />
+			<many-to-many column="idequipo"  class="com.proyecto.dominio.Equipo" />
+		</set>
+		
+		<set inverse="true" name="userActividades" order-by="idusuario">
+   			<key column="idactividad"/>
+   			<one-to-many class="com.proyecto.dominio.UserActividad"/>
+  		</set>
+		
+        <many-to-one column="idtipo" name="parentTipo" not-null="true"/>
+        
+        <many-to-one column="idreglaPorDefecto" name="parentReglaPorDefecto" not-null="true"/>
+        
+        <set inverse="true" name="torneos" order-by="id">
+   			<key column="idactividad"/>
+   			<one-to-many class="com.proyecto.dominio.Torneo"/>
+  		</set>
+  		
+		<set name="comunidades" table="ACTIVIDAD_COM" > <!-- Hay que ver si poner aqui inverse="true" -->
+			<key column="idactividad" />
+			<many-to-many column="idcomunidad"  class="com.proyecto.dominio.Comunidad" />
+		</set>  		
+    </class>
+</hibernate-mapping>

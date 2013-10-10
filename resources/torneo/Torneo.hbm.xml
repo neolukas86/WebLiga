@@ -1,0 +1,93 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+                                   "http://hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated 03-nov-2011 14:38:58 by Hibernate Tools 3.4.0.CR1 -->
+<hibernate-mapping>
+ <class name="com.proyecto.dominio.Torneo" table="TORNEO">
+  <id name="id" type="int">
+   <column name="ID"/>
+   <generator class="increment"/>
+  </id>
+  <property generated="never" lazy="false" name="nombre" type="java.lang.String">
+   <column name="NOMBRE" not-null="true" unique="true"/>
+  </property>
+  <property generated="never" lazy="false" name="fechaCreacion" type="java.sql.Date">
+   <column default="CURRENT_TIMESTAMP" name="FECHACREACION" sql-type="TIMESTAMP"/>
+  </property>
+  <property generated="never" lazy="false" name="fechaComienzo" type="java.sql.Date">
+   <column default="Null" name="FECHACOMIENZO" not-null="false"/>
+  </property>
+  <property generated="never" lazy="false" name="fechaFinal" type="java.sql.Date">
+   <column default="Null" name="FECHAFINAL" not-null="false"/>
+  </property>
+  <property generated="never" lazy="false" name="online" type="java.lang.Boolean">
+   <column name="ONLINE"/>
+  </property>
+  <property generated="never" lazy="false" name="porEquipos" type="java.lang.Boolean">
+   <column name="porequipos"/>
+  </property>
+  <property generated="never" lazy="false" name="liga" type="java.lang.Boolean">
+   <column name="liga"/>
+  </property>
+  <property generated="never" lazy="false" name="rondas" type="java.lang.Integer">
+   <column name="rondas"/>
+  </property>
+  <property generated="never" lazy="false" name="sorteado" type="java.lang.Boolean">
+   <column default="false" name="sorteado"/>
+  </property>  
+  <property generated="never" lazy="false" name="estado" type="java.lang.Integer">
+   <column name="estado"/>
+  </property>
+  <property generated="never" lazy="false" name="jornadasJugables" type="java.lang.Integer">
+   <column name="JORNADASJUGABLES"/>
+  </property>
+  <property generated="never" lazy="false" name="jornadaActual" type="java.lang.Integer">
+   <column name="JORNADAACTUAL"/>
+  </property>
+  <property generated="never" lazy="false" name="modoEnfrentamiento" type="java.lang.Boolean">
+   <column default="false" name="modoEnfrentamiento"/>
+  </property>
+  <property generated="never" lazy="false" name="passwordProtected" type="boolean">
+   <column default="0" name="PASSWORDPROTECTED" not-null="true"/>
+  </property>
+  <property generated="never" lazy="false" name="joinPassword" type="java.lang.String">
+   <column name="JOINPASSWORD" not-null="false"/>
+  </property>
+  
+  <property generated="never" lazy="false" name="regRequest" type="boolean">
+   	<column default="0" name="REGREQUEST" not-null="true"/>
+  </property>
+  		  
+  <many-to-one column="idcomunidad" name="parentComunidad" not-null="true"/>
+  <many-to-one column="idactividad" name="parentActividad" lazy="false"/>
+  <many-to-one column="idplataforma" name="parentPlataforma" lazy="false"/>
+  <many-to-one column="idregla" name="parentRegla" lazy="false"/>
+  
+  <set inverse="true" name="userTorneos" order-by="idusuario">
+   <key column="idtorneo"/>
+   <one-to-many class="com.proyecto.dominio.UserTorneo"/>
+  </set>
+  <set inverse="true" name="equipoTorneos" order-by="idequipo">
+   <key column="idtorneo"/>
+   <one-to-many class="com.proyecto.dominio.EquipoTorneo"/>
+  </set>  
+  <set inverse="true" name="partidosIndVersus" order-by="idtorneo, id" >
+   <key column="idtorneo"/>
+   <one-to-many class="com.proyecto.dominio.PartidoIndividualVersus"/>
+  </set>
+  <set inverse="true" name="partidosEqVersus" order-by="idtorneo, id" >
+   <key column="idtorneo"/>
+   <one-to-many class="com.proyecto.dominio.PartidoEquiposVersus"/>
+  </set>  
+
+  
+  <set name="usuariosRequest" sort="unsorted" table="REQUEST_USUARIO_TOR">
+   <key column="idtorneo"/>
+   <many-to-many column="idusuario" class="com.proyecto.dominio.User"/>
+  </set>
+  <set name="equiposRequest" sort="unsorted" table="REQUEST_EQUIPO_TOR">
+   <key column="idtorneo"/>
+   <many-to-many column="idequipo" class="com.proyecto.dominio.Equipo"/>
+  </set>
+ </class>
+</hibernate-mapping>

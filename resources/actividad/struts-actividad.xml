@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC
+"-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"
+"http://struts.apache.org/dtds/struts-2.0.dtd">
+ 
+<struts>
+ 
+<package name="actividad" extends="default">
+	<action name="EliminarActividad" method="ComprobarPermisoBorrado"
+			class="com.proyecto.actions.ComunidadAction">
+		<result name="success" type="redirectAction">
+			<param name="actionName">EliminarComunidadEstado</param>
+			<param name="id">${id}</param>
+		</result>
+		<result name="error" type="redirectAction">
+			<param name="actionName">VerComunidad</param>
+			<param name="tab">admin</param>
+			<param name="subTab">eliminar</param>
+			<param name="id">${id}</param>
+		</result>
+		<result name="input" type="redirectAction">
+			<param name="actionName">VerComunidad</param>
+			<param name="tab">admin</param>
+			<param name="subTab">eliminar</param>
+			<param name="id">${id}</param>
+		</result>			
+	</action>
+
+	<action name="EliminarActividadEstado" method="ComprobarEstadoTorneos"
+			class="com.proyecto.actions.ComunidadAction">
+		<result  type="redirectAction">
+			<param name="actionName">EliminarComunidadBBDD</param>
+			<param name="id">${id}</param>
+		</result>			
+		<result name="error" type="redirectAction">
+			<param name="actionName">VerComunidad</param>
+			<param name="tab">admin</param>
+			<param name="subTab">eliminar</param>
+			<param name="id">${id}</param>
+		</result>	
+	</action>
+	
+	<action name="EliminarActividadBBDD" method="delete"
+			class="com.proyecto.actions.ComunidadAction">
+		<result name="success" type="redirectAction">
+			<param name="actionName">VolverIndex</param>
+			<param name="namespace">/web</param>
+		</result>
+		<result name="error" type="redirectAction">
+			<param name="actionName">VerComunidad</param>
+			<param name="tab">admin</param>
+			<param name="subTab">eliminar</param>
+			<param name="id">${id}</param>
+		</result>
+		<result name="input" type="redirectAction">
+			<param name="actionName">VerComunidad</param>
+			<param name="tab">admin</param>
+			<param name="subTab">eliminar</param>
+			<param name="id">${id}</param>
+		</result>			
+	</action>
+	
+	<action name="SacarRangoUsuarioComunidad" method="SacarRangoUsuario"
+			class="com.proyecto.actions.ComunidadAction">
+	</action>
+</package>
+ 
+</struts>

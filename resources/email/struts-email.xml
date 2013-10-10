@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC
+"-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"
+"http://struts.apache.org/dtds/struts-2.0.dtd">
+ 
+<struts>
+ 
+<package name="email" extends="default">
+		<action name="RecuperarDatos" method="RecuperarDatosEmail"
+				class="com.proyecto.actions.UtilAction">
+			<result name="success">/WEB-INF/pages/Home.jsp</result>
+			<result name="input">/WEB-INF/pages/RecuperarDatos.jsp</result>
+			<result name="error">/WEB-INF/pages/RecuperarDatos.jsp</result>		
+		</action>
+		
+		<action name="GoRecordatorioUser"
+			class="com.proyecto.actions.UtilAction">
+		<result name="success">/WEB-INF/pages/RecuperarDatos.jsp</result>
+		<result name="input">/WEB-INF/pages/Home.jsp</result>
+		</action>
+</package>
+ 
+</struts>

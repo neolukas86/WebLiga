@@ -1,0 +1,12 @@
+@charset "utf-8";
+.form fieldset { position:relative; margin-top:1em; padding-top:1.75em;} 
+.form fieldset fieldset { position:relative; margin-top:2em; padding-top:1.75em;}
+.form legend { position:absolute; top:-.5em; left:.5em;}
+.form fieldset fieldset legend {position:absolute; top:-.5em; left:.5em;}
+
+.menu_central_body { *padding-top:10px;} /* Para IE7 e inferiores */
+
+
+.rounded-corners {
+	behavior: url(../css/PIE.htc);
+}

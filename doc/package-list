@@ -1,0 +1,15 @@
+com.proyecto.actions
+com.proyecto.dao
+com.proyecto.dominio
+com.proyecto.interceptors
+com.proyecto.util.dao
+com.proyecto.util.displaytag
+com.proyecto.util.encriptado
+com.proyecto.util.funciones.auxiliares
+com.proyecto.util.hibernate
+com.proyecto.util.listas
+com.proyecto.util.listas.ACB
+com.proyecto.util.listas.EPL
+com.proyecto.util.listas.LFP
+com.proyecto.util.properties
+com.proyecto.util.sorteo

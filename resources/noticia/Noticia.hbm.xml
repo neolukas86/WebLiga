@@ -1,0 +1,35 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated 18-jul-2012 19:16:44 by Hibernate Tools 3.4.0.CR1 -->
+<hibernate-mapping>
+    <class name="com.proyecto.dominio.Noticia" table="NOTICIA">
+		  <id name="id" type="int">
+		   <column name="ID"/>
+		   <generator class="increment"/>
+		  </id>
+        <property name="mensaje" type="java.lang.String">
+            <column name="MENSAJE" />
+        </property>
+        <property name="titulo" type="java.lang.String">
+            <column name="TITULO" />
+        </property>
+        <property name="fechaPublicacion" type="java.util.Date">
+            <column default="CURRENT_TIMESTAMP" name="FECHAPUBLICACION" sql-type="TIMESTAMP"/>
+        </property>
+        <property name="fechaEdicion" type="java.util.Date">
+            <column name="FECHAEDICION" not-null="false"/>
+        </property>
+        <property name="nuevoRango" type="java.lang.Integer">
+            <column name="NUEVORANGO" />
+        </property>
+        
+        
+        <many-to-one column="idtorneo" name="parentTorneo" />
+        <many-to-one column="idcomunidad" name="parentComunidad" />
+        <many-to-one column="idequipo" name="parentEquipo" />
+        <many-to-one column="idusuario" name="parentUsuario" />
+        <many-to-one column="idautor" name="parentAutor" />
+        <many-to-one column="idcategoria" name="parentCategoriaNoticia" />
+    </class>
+</hibernate-mapping>

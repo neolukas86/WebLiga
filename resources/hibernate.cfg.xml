@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-configuration PUBLIC "-//Hibernate/Hibernate Configuration DTD 3.0//EN"
+                                         "http://hibernate.org/dtd/hibernate-configuration-3.0.dtd">
+<hibernate-configuration>
+ <session-factory name="factoria">
+  <property name="hibernate.connection.driver_class">com.mysql.jdbc.Driver</property>
+  <property name="hibernate.connection.password">matr1x</property>
+  <property name="hibernate.connection.username">root</property>
+  <property name="hibernate.dialect">org.hibernate.dialect.MySQLDialect</property>
+  <property name="hibernate.connection.url">jdbc:mysql://localhost:3306/base</property>
+  <property name="hibernate.connection.pool_size">1</property>
+  <property name="hibernate.show_sql">true</property>
+  <property name="hibernate.current_session_context_class">org.hibernate.context.internal.ManagedSessionContext</property>
+  <property name="hibernate.cache.region.factory_class">org.hibernate.cache.ehcache.EhCacheRegionFactory</property>
+  <property name="hibernate.cache.use_second_level_cache">true</property>
+  <property name="hibernate.cache.use_query_cache">true</property>
+  <property name="hibernate.cache.use_structured_entries">true</property>
+  <mapping class="com.proyecto.dominio.Comunidad" resource="comunidad/Comunidad.hbm.xml"/>
+  <mapping class="com.proyecto.dominio.Torneo" resource="userTorneo/UserTorneo.hbm.xml"/>
+  <mapping class="com.proyecto.dominio.User" resource="user/User.hbm.xml"/>
+  <mapping class="com.proyecto.dominio.UserComunidad" resource="userComunidad/UserComunidad.hbm.xml"/>
+  <mapping class="com.proyecto.dominio.Torneo" resource="torneo/Torneo.hbm.xml"/>
+  <mapping class="com.proyecto.dominio.Pais" resource="lugar/Pais.hbm.xml"/>
+  <mapping class="com.proyecto.dominio.Municipio" resource="lugar/Municipio.hbm.xml"/>
+  <mapping class="com.proyecto.dominio.Provincia" resource="lugar/Provincia.hbm.xml"/>
+  <mapping class="com.proyecto.dominio.Region" resource="lugar/Region.hbm.xml"/>
+  <mapping class="com.proyecto.dominio.Continente" resource="lugar/Continente.hbm.xml"/>
+  <mapping class="com.proyecto.dominio.Actividad" resource="actividad/Actividad.hbm.xml"/>
+  <mapping class="com.proyecto.dominio.TipoActividad" resource="actividad/TipoActividad.hbm.xml"/>
+  <mapping class="com.proyecto.dominio.Equipo" resource="equipo/Equipo.hbm.xml"/>
+  <mapping class="com.proyecto.dominio.Manga" resource="partido/Manga.hbm.xml"/>
+  <mapping class="com.proyecto.dominio.PartidoEquiposVersus" resource="partido/PartidoEquiposVersus.hbm.xml"/>
+  <mapping class="com.proyecto.dominio.PartidoIndividualVersus" resource="partido/PartidoIndividualVersus.hbm.xml"/>
+  <mapping class="com.proyecto.dominio.UserEquipo" resource="userEquipo/UserEquipo.hbm.xml"/>
+  <mapping class="com.proyecto.dominio.Plataforma" resource="actividad/Plataforma.hbm.xml"/>
+  <mapping class="com.proyecto.dominio.UserActividad" resource="userActividad/UserActividad.hbm.xml"/>
+  <mapping class="com.proyecto.dominio.UserPlataforma" resource="userPlataforma/UserPlataforma.hbm.xml"/>
+  <mapping class="com.proyecto.dominio.Noticia" resource="noticia/Noticia.hbm.xml"/>
+  <mapping class="com.proyecto.dominio.CategoriaNoticia" resource="noticia/CategoriaNoticia.hbm.xml"/>
+  <mapping class="com.proyecto.dominio.Regla" resource="regla/Regla.hbm.xml"/>
+  <mapping class="com.proyecto.dominio.EquipoComunidad" resource="equipoComunidad/EquipoComunidad.hbm.xml"/>
+  <mapping class="com.proyecto.dominio.EquipoTorneo" resource="equipoTorneo/EquipoTorneo.hbm.xml"/>
+ </session-factory>
+</hibernate-configuration>

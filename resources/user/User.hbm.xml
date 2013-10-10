@@ -1,0 +1,116 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+                                   "http://hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated 04-oct-2011 20:55:58 by Hibernate Tools 3.4.0.CR1 -->
+<hibernate-mapping>
+ <class name="com.proyecto.dominio.User" table="USUARIO">
+  <id name="id" type="int">
+   <column name="ID"/>
+   <generator class="increment"/>
+  </id>
+  <property generated="never" lazy="false" name="alias" type="java.lang.String">
+   <column name="ALIAS" not-null="true" unique="true"/>
+  </property>
+  <property generated="never" lazy="false" name="password" type="java.lang.String">
+   <column name="PASSWORD" not-null="true"/>
+  </property>
+  <property generated="never" lazy="false" name="lenguaje" type="java.lang.String">
+   <column default="es" name="LENGUAJE" not-null="true"/>   
+  </property>
+  <property generated="never" lazy="false" name="nombre" type="java.lang.String">
+   <column default="Null" name="NOMBRE" not-null="false"/>
+  </property>
+  <property generated="never" lazy="false" name="apellido" type="java.lang.String">
+   <column default="Null" name="APELLIDO" not-null="false"/>
+  </property>
+  <property generated="never" lazy="false" name="email" type="java.lang.String">
+   <column default="Null" name="EMAIL" not-null="true" unique="true"/>
+  </property>
+  <property generated="never" lazy="false" name="homepage" type="java.lang.String">
+   	<column name="HOMEPAGE" not-null="false" unique="false"/>
+  </property>  
+  <property generated="never" lazy="false" name="sexo" type="java.lang.Boolean">
+   <column default="Null" name="SEXO" not-null="false"/>
+  </property>
+  <property generated="never" lazy="false" name="invitado" type="java.lang.Boolean">
+   <column default="false" name="INVITADO" not-null="true"/>
+  </property>
+  <property generated="never" lazy="false" name="expulsado" type="java.lang.Boolean">
+   <column default="false" name="EXPULSADO" not-null="true"/>
+  </property>  
+  <property generated="never" lazy="false" name="superadministrador" type="java.lang.Boolean">
+   <column default="false" name="SUPERADMINISTRADOR" not-null="true"/>
+  </property>
+  <property generated="never" lazy="false" name="nacimiento" type="java.sql.Date">
+   <column default="Null" name="NACIMIENTO" not-null="false"/>
+  </property>
+  <property generated="never" lazy="false" name="fechaRegistro" type="java.sql.Date">
+   <column default="CURRENT_TIMESTAMP" name="FECHAREGISTRO" sql-type="TIMESTAMP"/>
+  </property>
+  <many-to-one lazy="false" column="idpais" name="parentPais"/>
+  <many-to-one lazy="false" column="idmunicipio" name="parentMunicipio"/>
+  
+  <set inverse="true" name="userComunidades" order-by="idusuario">
+   <key column="idusuario"/>
+   <one-to-many class="com.proyecto.dominio.UserComunidad"/>
+  </set>
+  
+  <set inverse="true" name="userTorneos" order-by="idusuario">
+   <key column="idusuario"/>
+   <one-to-many class="com.proyecto.dominio.UserTorneo"/>
+  </set>
+  
+  <set inverse="true" name="userEquipos" order-by="idequipo">
+   <key column="idusuario"/>
+   <one-to-many class="com.proyecto.dominio.UserEquipo"/>
+  </set>
+  
+  <set inverse="true" name="userActividades" order-by="idusuario">
+   <key column="idusuario"/>
+   <one-to-many class="com.proyecto.dominio.UserActividad"/>
+  </set>
+  
+  <set inverse="true" name="userPlataformas" order-by="idusuario">
+   <key column="idusuario"/>
+   <one-to-many class="com.proyecto.dominio.UserPlataforma"/>
+  </set>
+    
+  <set inverse="true" name="partidosVSLocal" order-by="id">
+   <key column="idlocal"/>
+   <one-to-many class="com.proyecto.dominio.PartidoIndividualVersus"/>
+  </set>
+  <set inverse="true" name="partidosVSVisitante" order-by="id">
+   <key column="idvisitante"/>
+   <one-to-many class="com.proyecto.dominio.PartidoIndividualVersus"/>
+  </set>
+  <set inverse="true" name="partidosVSGanados" order-by="id">
+   <key column="idganador"/>
+   <one-to-many class="com.proyecto.dominio.PartidoIndividualVersus"/>
+  </set>
+  <set inverse="true" name="partidosVSPerdidos" order-by="id">
+   <key column="idperdedor"/>
+   <one-to-many class="com.proyecto.dominio.PartidoIndividualVersus"/>
+  </set>
+    
+  <set name="comunidadesRequest" table="REQUEST_USUARIO_COM" > 
+			<key column="idusuario" />
+			<many-to-many column="idcomunidad"  class="com.proyecto.dominio.Comunidad" />
+	</set>
+  <set name="torneosRequest" table="REQUEST_USUARIO_TOR" > 
+			<key column="idusuario" />
+			<many-to-many column="idtorneo"  class="com.proyecto.dominio.Torneo" />
+	</set>
+  <set name="equiposRequest" table="REQUEST_USUARIO_EQ" > 
+			<key column="idusuario" />
+			<many-to-many column="idequipo"  class="com.proyecto.dominio.Equipo" />
+	</set>
+	<set name="invitadosRequest" table="REQUEST_USUARIO_INVITADO" lazy="false"> 
+			<key column="idusuario" />
+			<many-to-many column="idinvitado"  class="com.proyecto.dominio.User" />
+	</set>
+	<set name="usuariosRequest" table="REQUEST_USUARIO_INVITADO" lazy="false"> 
+			<key column="idinvitado" />
+			<many-to-many column="idusuario"  class="com.proyecto.dominio.User" />
+	</set>			
+ </class>
+</hibernate-mapping>

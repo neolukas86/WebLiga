@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE validators PUBLIC
+        "-//OpenSymphony Group//XWork Validator 1.0.2//EN"
+        "http://www.opensymphony.com/xwork/xwork-validator-1.0.2.dtd">
+<validators>   
+    <field name="nombre">
+    	<field-validator type="regex">
+    		<param name="trim">true</param>
+    		<param name="expression"><![CDATA[^([\-\.a-zA-Z ÇüéâäàåçêëèïîíìÄÅÉæÆôöòûùÖÜáíóúñÑÀÁÂÃÈÊËÌÍÎÏÐÒÓÔÕØÙÚÛÝßãðõøýþÿ]+)$]]></param>
+    		<message key="error.invalid.firstname" />
+    	</field-validator>
+    	<field-validator type="stringlength">
+        	<param name="trim">true</param>
+        	<param name="minLength">1</param>
+        	<param name="maxLength">35</param>
+            <message key="error.length.firstname" />
+        </field-validator>
+    </field>
+    
+        <field name="apellido">
+    	<field-validator type="regex">
+    		<param name="trim">true</param>
+    		<param name="expression"><![CDATA[^([\-\.a-zA-Z ÇüéâäàåçêëèïîíìÄÅÉæÆôöòûùÖÜáíóúñÑÀÁÂÃÈÊËÌÍÎÏÐÒÓÔÕØÙÚÛÝßãðõøýþÿ]+)$]]></param>
+    		<message key="error.invalid.lastname" />
+    	</field-validator>
+    	<field-validator type="stringlength">
+        	<param name="trim">true</param>
+        	<param name="minLength">1</param>
+        	<param name="maxLength">50</param>
+            <message key="error.length.lastname" />
+        </field-validator>
+    </field>
+    
+    <field name="email">
+    	<field-validator type="requiredstring">
+        	<param name="trim">true</param>
+            <message key="error.required.email" />
+        </field-validator>
+    	<field-validator type="email">
+    		<message key="error.invalid.email" />
+    	</field-validator>
+    	<field-validator type="stringlength">
+        	<param name="trim">true</param>
+        	<param name="minLength">1</param>
+        	<param name="maxLength">50</param>
+            <message key="error.length.email" />
+        </field-validator>
+    </field>
+    
+    <field name="homepage">
+    	<field-validator type="url">
+    		<message key="error.invalid.homepage" />
+    	</field-validator>
+    </field>
+</validators>
+

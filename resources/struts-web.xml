@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC
+"-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"
+"http://struts.apache.org/dtds/struts-2.0.dtd">
+ 
+<struts>
+ 
+<package name="web" extends="default">
+		<action name="VolverIndex" method="Volver"
+			class="com.proyecto.actions.UtilAction">
+			<result name="success">/WEB-INF/pages/Index.jsp</result>
+			<result name="superadministrador">/WEB-INF/pages/IndexAdmin.jsp</result>
+	</action>
+<!-- 		<action name="VolverIndexAdmin" -->
+<!-- 			class="com.proyecto.actions.UtilAction"> -->
+<!-- 			<result name="success">/WEB-INF/pages/IndexAdmin.jsp</result> -->
+<!-- 			<result name="input">/WEB-INF/pages/IndexAdmin.jsp</result> -->
+<!-- 	</action>		 -->
+		<action name="Internacionalizar" method="Internacionalizar"
+			class="com.proyecto.actions.UtilAction">
+			<result name="success">/WEB-INF/pages/Index.jsp</result>
+			<result name="superadministrador">/WEB-INF/pages/IndexAdmin.jsp</result>
+	</action>
+<!-- 		<action name="InternacionalizarAdmin" method="Internacionalizar" -->
+<!-- 			class="com.proyecto.actions.UtilAction"> -->
+<!-- 			<result name="success">/WEB-INF/pages/IndexAdmin.jsp</result> -->
+<!-- 	</action> -->
+		<action name="GoAdminActividades" method="GoAdminActividades"
+			class="com.proyecto.actions.UtilAction">
+			<result name="success">/WEB-INF/pages/admin/superadministrador/ActividadesAdmin.jsp</result>
+	</action>
+	<action name="EstadisticasActividad" method="EstadisticasActividad"
+			class="com.proyecto.actions.UtilAction">
+			<result name="success">/WEB-INF/pages/estadisticas/actividad/EstadisticasActividad.jsp</result>
+	</action>
+		<action name="GoAdminPlataformas" method="GoAdminPlataformas"
+			class="com.proyecto.actions.UtilAction">
+			<result name="success">/WEB-INF/pages/admin/superadministrador/PlataformasAdmin.jsp</result>
+	</action>
+	<action name="EstadisticasPlataforma" method="EstadisticasPlataforma"
+			class="com.proyecto.actions.UtilAction">
+			<result name="success">/WEB-INF/pages/estadisticas/plataforma/EstadisticasPlataforma.jsp</result>
+	</action>				
+	<action name="Error403"
+			class="com.proyecto.actions.UtilAction">
+			<result name="success">/WEB-INF/pages/error/error403.jsp</result>
+			<result name="input">/WEB-INF/pages/error/error403.jsp</result>
+	</action>	
+	<action name="Error404"
+			class="com.proyecto.actions.UtilAction">
+			<result name="success">/WEB-INF/pages/error/error404.jsp</result>
+			<result name="input">/WEB-INF/pages/error/error404.jsp</result>
+	</action>
+	<action name="Error500"
+			class="com.proyecto.actions.UtilAction">
+			<result name="success">/WEB-INF/pages/error/error500.jsp</result>
+			<result name="input">/WEB-INF/pages/error/error500.jsp</result>
+	</action>		
+	
+</package>
+ 
+</struts>

@@ -1,0 +1,9 @@
+@charset "utf-8";
+
+.menu_central_header_miTorneo_imagen { background: url(../images/template/banner/es/ImagenMiTorneo2.png) left center no-repeat;}
+.menu_central_header_miComunidad_imagen { background: url(../images/template/banner/es/ImagenMiComunidad2.png) left center no-repeat;}
+.menu_central_header_miEquipo_imagen { background: url(../images/template/banner/es/ImagenMiEquipo2.png) left center no-repeat;}
+.menu_central_header_miJugador_imagen { background: url(../images/template/banner/es/ImagenMiJugador2.png) left center no-repeat;}
+
+.error404_imagen { background: url(../images/error/error404_es.jpg) left center no-repeat;}
+.error500_imagen { background: url(../images/error/error500_es.jpg) left center no-repeat;}

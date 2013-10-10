@@ -1,0 +1,351 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC
+"-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"
+"http://struts.apache.org/dtds/struts-2.0.dtd">
+ 
+<struts>
+ 
+<package name="equipo" extends="default">
+	<action name="VerEquipo"
+			class="com.proyecto.actions.EquipoAction">
+		<result name="success">/WEB-INF/pages/EquipoTabbedPanel.jsp</result>
+		<result name="error" type="redirectAction">
+			<param name="actionName">VolverIndex</param>
+			<param name="namespace">/web</param>
+		</result>
+	</action>
+	<action name="EquipoDisplay" method="GoInfoEquipo"
+			class="com.proyecto.actions.EquipoAction">
+		<result name="success">/WEB-INF/pages/Equipo.jsp</result>
+		<result name="error">/WEB-INF/pages/EquipoTabbedPanel.jsp</result>
+	</action>
+	<action name="GoAdminEquipos" method="GoAdminEquipos"
+			class="com.proyecto.actions.EquipoAction">
+			<result name="success">/WEB-INF/pages/admin/superadministrador/EquiposAdmin.jsp</result>
+	</action>
+	<action name="EstadisticasEquipo" method="EstadisticasEquipo"
+			class="com.proyecto.actions.EquipoAction">
+		<result name="success">/WEB-INF/pages/estadisticas/equipo/EstadisticasEquipo.jsp</result>
+	</action>	
+	<action name="GoNoticiasEquipo" method="GoNoticiasEquipo"
+			class="com.proyecto.actions.EquipoAction">
+		<result name="success">/WEB-INF/pages/noticias/Noticias.jsp</result>
+		<result name="error">/WEB-INF/pages/EquipoTabbedPanel.jsp</result>
+	</action>
+	<action name="GoUnirEquipo" method="GoJoinEquipo"
+			class="com.proyecto.actions.EquipoAction">
+		<result name="success">/WEB-INF/pages/join/UnirseEquipo.jsp</result>
+		<result name="error">/WEB-INF/pages/EquipoTabbedPanel.jsp</result>
+		<result name="input">/WEB-INF/pages/EquipoTabbedPanel.jsp</result>
+	</action>
+		<action name="JoinEquipo" method="UnirseEquipo"
+			class="com.proyecto.actions.EquipoAction">
+		<result name="success">/WEB-INF/pages/Equipo.jsp</result>
+		<result name="error">/WEB-INF/pages/join/UnirseEquipo.jsp</result>
+		<result name="input">/WEB-INF/pages/join/UnirseEquipo.jsp</result>		
+	</action>
+	<action name="JoinEquipoPassword" method="UnirseEquipoPassword"
+			class="com.proyecto.actions.EquipoAction">
+		<result name="success">/WEB-INF/pages/Equipo.jsp</result>
+		<result name="error">/WEB-INF/pages/join/UnirseEquipo.jsp</result>
+		<result name="input">/WEB-INF/pages/join/UnirseEquipo.jsp</result>		
+	</action>
+	<action name="PasswordEquipo" method="CambiarPassword"
+			class="com.proyecto.actions.EquipoAction">
+		<result type="redirectAction">
+			<param name="actionName">VerEquipo</param>
+			<param name="id">${id}</param>
+		</result>					
+	</action>
+		<action name="ConfirmacionRegistroEquipo" method="CambiarConfirmacion"
+			class="com.proyecto.actions.EquipoAction">
+		<result type="redirectAction">
+			<param name="actionName">VerEquipo</param>
+			<param name="id">${id}</param>
+		</result>					
+	</action>	
+		<action name="GoRequestsEquipo" method="GoRequests"
+			class="com.proyecto.actions.EquipoAction">
+		<result name="success">/WEB-INF/pages/admin/equipo/SolicitudesEquipo.jsp</result>
+		<result name="error">/WEB-INF/pages/Equipo.jsp</result>
+		<result name="input">/WEB-INF/pages/Equipo.jsp</result>			
+	</action>
+	<action name="AceptarRequestEquipo" method="AceptarRequest"
+			class="com.proyecto.actions.EquipoAction">
+		<result type="redirectAction">
+			<param name="actionName">VerEquipo</param>
+			<param name="tab">admin</param>
+			<param name="subTab">usuarios</param>
+			<param name="id">${id}</param>
+		</result>			
+	</action>
+	<action name="DenegarRequestEquipo" method="DenegarRequest"
+			class="com.proyecto.actions.EquipoAction">
+		<result type="redirectAction">
+			<param name="actionName">VerEquipo</param>
+			<param name="tab">admin</param>
+			<param name="subTab">usuarios</param>
+			<param name="id">${id}</param>
+		</result>		
+	</action>
+	<action name="BanearUsuarioEquipo" method="BanearUsuario"
+			class="com.proyecto.actions.EquipoAction">
+		<result type="redirectAction">
+			<param name="actionName">VerEquipo</param>
+			<param name="tab">admin</param>
+			<param name="subTab">usuarios</param>
+			<param name="id">${id}</param>
+		</result>			
+	</action>	
+	<action name="ExpulsarUsuarioEquipo" method="ExpulsarUsuario"
+			class="com.proyecto.actions.EquipoAction">
+		<result type="redirectAction">
+			<param name="actionName">VerEquipo</param>
+			<param name="tab">admin</param>
+			<param name="subTab">usuarios</param>
+			<param name="id">${id}</param>
+		</result>			
+	</action>
+	<action name="JoinRequestEquipo" method="RequestEquipo"
+			class="com.proyecto.actions.EquipoAction">
+		<result type="redirectAction">
+			<param name="actionName">VerEquipo</param>
+			<param name="id">${id}</param>
+		</result>
+		<result name="error" type="redirectAction">
+			<param name="actionName">VerEquipo</param>
+			<param name="tab">join</param>
+			<param name="id">${id}</param>
+		</result>
+		<result name="input" type="redirectAction">
+			<param name="actionName">VerEquipo</param>
+			<param name="tab">join</param>
+			<param name="id">${id}</param>
+		</result>	
+	</action>	
+	<action name="JoinRequestEquipoPassword" method="RequestEquipoPassword"
+			class="com.proyecto.actions.EquipoAction">
+		<result type="redirectAction">
+			<param name="actionName">VerEquipo</param>
+			<param name="id">${id}</param>
+		</result>
+		<result name="error" type="redirectAction">
+			<param name="actionName">VerEquipo</param>
+			<param name="tab">join</param>
+			<param name="id">${id}</param>
+		</result>
+		<result name="input" type="redirectAction">
+			<param name="actionName">VerEquipo</param>
+			<param name="tab">join</param>
+			<param name="id">${id}</param>
+		</result>		
+	</action>	
+	<action name="GoAbandonarEquipo" method="GoAbandonarEquipo"
+			class="com.proyecto.actions.EquipoAction">
+		<result name="success">/WEB-INF/pages/abandono/AbandonarEquipo.jsp</result>
+		<result name="error">/WEB-INF/pages/EquipoTabbedPanel.jsp</result>
+	</action>
+	<action name="GoAdminEquipo" method="GoAdminEquipo"
+			class="com.proyecto.actions.EquipoAction">
+		<result name="success">/WEB-INF/pages/admin/equipo/AdminEquipoTabbedPanel.jsp</result>
+		<result name="error">/WEB-INF/pages/EquipoTabbedPanel.jsp</result>
+	</action>
+	<action name="GoAdminUsuariosEquipo" method="GoAdminUsuariosEquipo"
+			class="com.proyecto.actions.EquipoAction">
+		<result name="success">/WEB-INF/pages/admin/equipo/UsuariosEquipo.jsp</result>
+		<result name="error">/WEB-INF/pages/admin/equipo/AdminEquipoTabbedPanel.jsp</result>
+	</action>
+	<action name="GoEliminarEquipo" method="GoEliminarEquipo"
+			class="com.proyecto.actions.EquipoAction">
+		<result name="success">/WEB-INF/pages/admin/equipo/EliminarEquipo.jsp</result>
+		<result name="error">/WEB-INF/pages/admin/equipo/AdminEquipoTabbedPanel.jsp</result>
+	</action>	
+	<action name="GoSettingsEquipo" method="GoSettings"
+			class="com.proyecto.actions.EquipoAction">
+		<result name="success">/WEB-INF/pages/admin/equipo/EquipoSettings.jsp</result>
+		<result name="error">/WEB-INF/pages/admin/equipo/AdminEquipoTabbedPanel.jsp</result>
+	</action>
+	<action name="EditarRangoEquipo" method="EditarRango"
+			class="com.proyecto.actions.EquipoAction">
+		<result type="redirectAction">
+			<param name="actionName">VerEquipo</param>
+			<param name="tab">admin</param>
+			<param name="subTab">usuarios</param>
+			<param name="id">${id}</param>
+		</result>					
+	</action>
+	<action name="ModificarSettingsEquipo" method="ModificarSettings"
+			class="com.proyecto.actions.EquipoAction">
+		<result name="success" type="redirectAction">
+			<param name="actionName">VerEquipo</param>
+			<param name="id">${id}</param>
+		</result>
+		<result name="error" type="redirectAction">
+			<param name="actionName">VerEquipo</param>
+			<param name="tab">admin</param>
+			<param name="subTab">settings</param>
+			<param name="id">${id}</param>
+		</result>
+		<result name="input" type="redirectAction">
+			<param name="actionName">VerEquipo</param>
+			<param name="tab">admin</param>
+			<param name="subTab">settings</param>
+			<param name="id">${id}</param>
+		</result>
+	</action>
+	<action name="GoPasswordEquipo" method="GoPasswordEquipo"
+			class="com.proyecto.actions.EquipoAction">
+		<result name="success">/WEB-INF/pages/admin/equipo/PasswordEquipo.jsp</result>
+		<result name="error">/WEB-INF/pages/admin/equipo/AdminEquipoTabbedPanel.jsp</result>
+	</action>	
+	<action name="GoCrearEquipo" method="GoRegister"
+			class="com.proyecto.actions.EquipoAction">
+		<result name="success">/WEB-INF/pages/register/Register_team.jsp</result>
+		<result name="error" type="redirectAction">
+			<param name="actionName">VolverIndex</param>
+			<param name="namespace">/web</param>
+		</result>
+	</action>
+	<action name="CrearEquipo" method="merge"
+			class="com.proyecto.actions.EquipoAction">
+		<result name="success" type="redirectAction">
+			<param name="actionName">VerEquipo</param>
+			<param name="id">${id}</param>
+		</result>
+		<result name="error">/WEB-INF/pages/register/Register_team.jsp</result>
+		<result name="input">/WEB-INF/pages/register/Register_team.jsp</result>
+	</action>
+	<action name="CrearInvitadoEquipo" method="CrearInvitado"
+			class="com.proyecto.actions.EquipoAction">
+		<result type="redirectAction">
+			<param name="actionName">UnirInvitadoEquipo</param>
+			<param name="idequipo">${id}</param>
+			<param name="namespace">/torneo</param>
+			<param name="id">${idtorneo}</param>
+		</result>
+		<result name="error" type="redirectAction">
+			<param name="actionName">VolverIndex</param>
+			<param name="namespace">/web</param>
+		</result>
+		<result name="input" type="redirectAction">
+			<param name="actionName">VolverIndex</param>
+			<param name="namespace">/web</param>
+		</result>			
+	</action>
+	<action name="GoSearchTeam" method="GoSearch"
+			class="com.proyecto.actions.EquipoAction">
+		<result name="success">/WEB-INF/pages/buscadores/BuscadorEquipo.jsp</result>
+		<result name="error" type="redirectAction">
+			<param name="actionName">VolverIndex</param>
+			<param name="namespace">/web</param>
+		</result>
+	</action>	
+	<action name="SearchTeam" method="BuscarEquipo"
+			class="com.proyecto.actions.EquipoAction">
+		<result name="success">/WEB-INF/pages/display/equipo/EquiposDisplaySearch.jsp</result>
+		<result name="error" type="redirectAction">
+			<param name="actionName">VolverIndex</param>
+			<param name="namespace">/web</param>
+		</result>
+		<result name="input" type="redirectAction">
+			<param name="actionName">VolverIndex</param>
+			<param name="namespace">/web</param>
+		</result>
+	</action>
+	<action name="ListarEquiposPropios" method="EquipoListByUser"
+			class="com.proyecto.actions.EquipoAction">
+		<result name="success">/WEB-INF/pages/Equipos.jsp</result>
+		<result name="error" type="redirectAction">
+			<param name="actionName">VolverIndex</param>
+			<param name="namespace">/web</param>
+		</result>
+		<result name="input" type="redirectAction">
+			<param name="actionName">VolverIndex</param>
+			<param name="namespace">/web</param>
+		</result>
+	</action>
+	<action name="TomarPerfilEquipo" method="CambiarPerfilEquipo"
+			class="com.proyecto.actions.EquipoAction">
+		<result type="redirectAction">
+			<param name="actionName">VolverIndex</param>
+			<param name="namespace">/web</param>
+		</result>
+	</action>
+	
+	<action name="RequestAsociarEquipo" method="RequestAsociarInvitado"
+			class="com.proyecto.actions.EquipoAction">
+		<result type="redirectAction">
+			<param name="actionName">VerTorneo</param>
+			<param name="namespace">/torneo</param>
+			<param name="id">${idtorneo}</param>
+		</result>
+		<result name="error" type="redirectAction">
+			<param name="actionName">VolverIndex</param>
+			<param name="namespace">/web</param>
+		</result>
+		<result name="input" type="redirectAction">
+			<param name="actionName">VolverIndex</param>
+			<param name="namespace">/web</param>
+		</result>		
+	</action>
+
+	<action name="AceptarRequestEquipoInvitado" method="AceptarRequestInvitado"
+			class="com.proyecto.actions.EquipoAction">
+		<result type="redirectAction">
+			<param name="actionName">EliminarEquipoInvitado</param>
+			<param name="id">${entero}</param>
+			<param name="idtorneo">${idtorneo}</param>
+		</result>
+		<result name="error" type="redirectAction">
+			<param name="actionName">VolverIndex</param>
+			<param name="namespace">/web</param>
+		</result>
+		<result name="input" type="redirectAction">
+			<param name="actionName">VolverIndex</param>
+			<param name="namespace">/web</param>
+		</result>			
+	</action>
+	
+	
+		<action name="RechazarRequestEquipoInvitado" method="RechazarRequestInvitado"
+			class="com.proyecto.actions.EquipoAction">
+		<result type="redirectAction">
+			<param name="actionName">VerTorneo</param>
+			<param name="namespace">/torneo</param>
+			<param name="id">${idtorneo}</param>
+		</result>
+		<result name="error" type="redirectAction">
+			<param name="actionName">VolverIndex</param>
+			<param name="namespace">/web</param>
+		</result>
+		<result name="input" type="redirectAction">
+			<param name="actionName">VolverIndex</param>
+			<param name="namespace">/web</param>
+		</result>			
+	</action>
+	
+		<action name="EliminarEquipoInvitado" method="delete"
+			class="com.proyecto.actions.EquipoAction">
+		<result type="redirectAction">
+			<param name="actionName">VerTorneo</param>
+			<param name="namespace">/torneo</param>
+			<param name="id">${idtorneo}</param>
+		</result>
+		<result name="error" type="redirectAction">
+			<param name="actionName">VolverIndex</param>
+			<param name="namespace">/web</param>
+		</result>
+		<result name="input" type="redirectAction">
+			<param name="actionName">VolverIndex</param>
+			<param name="namespace">/web</param>
+		</result>			
+	</action>
+	
+	<action name="SacarRangoUsuarioEquipo" method="SacarRangoUsuario"
+			class="com.proyecto.actions.EquipoAction">
+	</action>	
+		
+	
+</package>
+ 
+</struts>

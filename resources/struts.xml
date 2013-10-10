@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC
+"-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"
+"http://struts.apache.org/dtds/struts-2.0.dtd">
+ 
+<struts>
+
+<constant name="struts.enable.DynamicMethodInvocation" value="false" />
+<constant name="struts.devMode" value="false" />
+<constant name="struts.custom.i18n.resources" value="global/global, global/error/form/errorform, global/direccion/direccion" />
+<constant name="struts.ui.theme" value="css_xhtml" />
+
+<package name="default" extends="struts-default">
+  <interceptors>  
+   <interceptor class="com.proyecto.interceptors.LoginInterceptor" name="loginInterceptor" />  
+  
+   <interceptor-stack name="stack-with-login" >
+   	<interceptor-ref name="loginInterceptor"/>
+   	<interceptor-ref name="defaultStack"/>
+   </interceptor-stack>  
+  </interceptors>
+  
+  <default-interceptor-ref name="stack-with-login" />
+  
+  <global-results>    
+   <result name="login">/WEB-INF/pages/Home.jsp</result>  
+  </global-results>	 
+	   
+</package>
+ 
+<include file="user/struts-user.xml" />
+<include file="comunidad/struts-comunidad.xml" />
+<include file="torneo/struts-torneo.xml" />
+<include file="equipo/struts-equipo.xml" />
+<include file="struts-web.xml" />
+<include file="email/struts-email.xml" />
+<include file="lugar/struts-lugar.xml" />
+<include file="partido/struts-partido.xml" />
+<include file="noticia/struts-noticia.xml" />
+ 	
+</struts>

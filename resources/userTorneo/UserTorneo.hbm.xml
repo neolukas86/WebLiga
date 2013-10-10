@@ -1,0 +1,42 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+                                   "http://hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated 30-nov-2011 14:53:49 by Hibernate Tools 3.4.0.CR1 -->
+<hibernate-mapping>
+ <class name="com.proyecto.dominio.UserTorneo" table="USUARIO_TORNEO">
+  <composite-id name="id" class="com.proyecto.dominio.UserTorneoPK">
+  	<key-many-to-one column="idusuario" name="parentUser"/>
+  	<key-many-to-one column="idtorneo" name="parentTorneo" />
+  </composite-id>
+  <property generated="never" lazy="false" name="rango" type="java.lang.Integer">
+   <column name="RANGO"/>
+  </property>
+  <property generated="never" lazy="false" name="participante" type="boolean">
+   <column name="PARTICIPANTE"/>
+  </property>  
+    <property generated="never" lazy="false" name="posicion" type="java.lang.Integer">
+   <column name="POSICION"/>
+  </property>
+  <property generated="never" lazy="false" name="puntos" type="java.lang.Integer">
+   <column name="PUNTOS"/>
+  </property>
+  <property generated="never" lazy="false" name="partidosGanados" type="java.lang.Integer">
+   <column name="PARTIDOSGANADOS"/>
+  </property>
+  <property generated="never" lazy="false" name="partidosEmpatados" type="java.lang.Integer">
+   <column name="PARTIDOSEMPATADOS"/>
+  </property>      
+  <property generated="never" lazy="false" name="partidosPerdidos" type="java.lang.Integer">
+   <column name="PARTIDOSPERDIDOS"/>
+  </property> 
+  <property generated="never" lazy="false" name="tantosFavor" type="java.lang.Integer">
+   <column name="TANTOSFAVOR"/>
+  </property>
+  <property generated="never" lazy="false" name="tantosContra" type="java.lang.Integer">
+   <column name="TANTOSCONTRA"/>
+  </property>     
+  <property generated="never" lazy="false" name="eliminado" type="java.lang.Boolean">
+   <column name="ELIMINADO"/>
+  </property>  
+ </class>
+</hibernate-mapping>

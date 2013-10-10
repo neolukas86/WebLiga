@@ -1,0 +1,40 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated 03-ene-2012 13:56:05 by Hibernate Tools 3.4.0.CR1 -->
+<hibernate-mapping>
+    <class name="com.proyecto.dominio.PartidoIndividualVersus" table="PARTIDO_IND_VS">
+        <id name="id" type="int" >
+   			<column name="ID"/>
+   			<generator class="increment"/>
+        </id>
+        
+        <property name="jornada" type="java.lang.Integer">
+            <column name="JORNADA" />
+        </property>
+        <property name="confirmado" type="java.lang.Boolean">
+            <column name="CONFIRMADO" />
+        </property>
+        <property name="rechazado" type="java.lang.Boolean">
+            <column name="RECHAZADO" />
+        </property>
+        <property name="puntosLocal" type="java.lang.Integer">
+            <column name="PUNTOSLOCAL" />
+        </property>
+        <property name="puntosVisitante" type="java.lang.Integer">
+            <column name="PUNTOSVISITANTE" />
+        </property>
+             
+		<many-to-one name="parentIntroductorResultado"	column="INTRODUCTORRESULTADO" lazy="false"/>                        	
+        <many-to-one name="parentLocal" 				column="IDLOCAL" lazy="false"/>
+        <many-to-one name="parentVisitante" 			column="IDVISITANTE" lazy="false"/>
+        <many-to-one name="parentGanador" 				column="IDGANADOR" />
+        <many-to-one name="parentPerdedor" 				column="IDPERDEDOR" />
+        <many-to-one name="parentTorneo" 				column="IDTORNEO" />
+        
+        <set inverse="true" name="mangas" order-by="numero" sort="unsorted">
+   			<key column="idpartidoIndVs" not-null="false"/>
+   			<one-to-many class="com.proyecto.dominio.Manga" />
+  		</set>
+    </class>
+</hibernate-mapping>

@@ -1,0 +1,253 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC
+"-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"
+"http://struts.apache.org/dtds/struts-2.0.dtd">
+ 
+<struts>
+ 
+<package name="user" extends="default">
+		
+	<action name="Login"
+			class="com.proyecto.actions.LoginAction">
+		<result name="success" type="redirectAction">
+			<param name="actionName">Internacionalizar</param>
+			<param name="namespace">/web</param>
+			<param name="request_locale">${lenguaje}</param>
+		</result>
+		<result name="superadministrador" type="redirectAction">
+			<param name="actionName">Internacionalizar</param>
+			<param name="namespace">/web</param>
+			<param name="request_locale">${lenguaje}</param>
+		</result>
+		<result name="error">/WEB-INF/pages/Home.jsp</result>
+		<result name="input">/WEB-INF/pages/Home.jsp</result>
+	</action>
+	<action name="GoAdminUsuarios" method="GoAdminUsuarios"
+			class="com.proyecto.actions.UserAction">
+			<result name="success">/WEB-INF/pages/admin/superadministrador/UsuariosAdmin.jsp</result>
+	</action>
+	<action name="EstadisticasUsuario" method="EstadisticasUsuario"
+			class="com.proyecto.actions.UserAction">
+		<result name="success">/WEB-INF/pages/estadisticas/usuario/EstadisticasUsuario.jsp</result>
+	</action>	
+	<action name="GoPerfil" method="GoPerfil"
+			class="com.proyecto.actions.UserAction">
+		<result name="success">/WEB-INF/pages/Perfil.jsp</result>
+		<result name="error">/WEB-INF/pages/Home.jsp</result>
+	</action>
+	<action name="GoRegisterUser" method="GoRegister"
+			class="com.proyecto.actions.UserAction">
+		<result name="success">/WEB-INF/pages/register/Register_user.jsp</result>
+		<result name="error">/WEB-INF/pages/Home.jsp</result>
+	</action>
+	<action name="GoModifyUser"
+			class="com.proyecto.actions.UserAction">
+		<result name="success">/WEB-INF/pages/settings/SettingsTabbedPanel.jsp</result>
+		<result name="error" type="redirectAction">
+			<param name="actionName">VolverIndex</param>
+			<param name="namespace">/web</param>
+		</result>
+		<result name="input" type="redirectAction">
+			<param name="actionName">VolverIndex</param>
+			<param name="namespace">/web</param>
+		</result>
+	</action>	
+	<action name="GoModifyUserProperties" method="GoModify"
+			class="com.proyecto.actions.UserAction">		 
+		<interceptor-ref name="store">
+       		<param name="operationMode">RETRIEVE</param>
+    	</interceptor-ref>
+    	<interceptor-ref name="stack-with-login"/>						
+		<result>/WEB-INF/pages/settings/PersonalSettings.jsp</result>
+		<result name="error">/WEB-INF/pages/settings/PersonalSettings.jsp</result>
+		<result name="input">/WEB-INF/pages/settings/PersonalSettings.jsp</result>
+	</action>
+	<action name="GoModifyUserPropertiesWeb" method="GoModifyWeb"
+			class="com.proyecto.actions.UserAction">			
+		<result name="success">/WEB-INF/pages/settings/WebSettings.jsp</result>
+	</action>	
+	<action name="GoSearchUser" method="GoSearch"
+			class="com.proyecto.actions.UserAction">			
+		<result name="success">/WEB-INF/pages/buscadores/BuscadorJugador.jsp</result>
+	</action>
+	<action name="SearchUser" method="BuscarJugador"
+			class="com.proyecto.actions.UserAction">
+		<result name="success">/WEB-INF/pages/display/jugador/UsuariosDisplaySearch.jsp</result>		
+	</action>
+	<action name="RegisterUser" method="merge"
+			class="com.proyecto.actions.UserAction">	
+		<result name="success" type="redirectAction">
+			<param name="actionName">Internacionalizar</param>
+			<param name="namespace">/web</param>
+			<param name="request_locale">${lenguaje}</param>
+		</result>
+		<result name="error">/WEB-INF/pages/register/Register_user.jsp</result>
+		<result name="input">/WEB-INF/pages/register/Register_user.jsp</result>
+	</action>
+	<action name="GoModifyPassword"
+			class="com.proyecto.actions.UtilAction">						
+		<result name="success">/WEB-INF/pages/settings/PasswordSettings.jsp</result>
+	</action>	
+	<action name="ChangeUserPassword" method="CambiarPassword"
+			class="com.proyecto.actions.UserAction">		
+		<result name="success" type="redirectAction">
+			<param name="actionName">VolverIndex</param>
+			<param name="namespace">/web</param>
+		</result>
+		<result name="error">/WEB-INF/pages/settings/PasswordSettings.jsp</result>
+		<result name="input">/WEB-INF/pages/settings/PasswordSettings.jsp</result>
+	</action>
+	<action name="ChangeUserProperties" method="CambiarPropiedades"
+			class="com.proyecto.actions.UserAction">		 			
+		<interceptor-ref name="store">
+            <param name="operationMode">STORE</param>
+        </interceptor-ref>
+        <interceptor-ref name="stack-with-login"/>
+		<result name="success" type="redirectAction">
+			<param name="actionName">GoModifyUser</param>
+		</result>
+		<result name="error" type="redirectAction">
+			<param name="actionName">GoModifyUser</param>
+		</result>
+		<result name="input" type="redirectAction">
+			<param name="actionName">GoModifyUser</param>
+		</result>		
+	</action>
+	<action name="ChangeUserPropertiesWeb" method="CambiarPropiedadesWeb"
+			class="com.proyecto.actions.UserAction">
+		<result name="success" type="redirectAction">
+			<param name="actionName">VolverIndex</param>
+			<param name="namespace">/web</param>
+		</result>
+		<result name="error" type="redirectAction">
+			<param name="actionName">GoModifyUser</param>
+		</result>
+		<result name="input" type="redirectAction">
+			<param name="actionName">GoModifyUser</param>
+		</result>
+	</action>	
+	<action name="ChangeUserPropertiesWeb" method="CambiarPropiedadesWeb"
+			class="com.proyecto.actions.UserAction">
+		<result name="success" type="redirectAction">
+			<param name="actionName">Internacionalizar</param>
+			<param name="namespace">/web</param>
+			<param name="request_locale">${lenguaje}</param>
+		</result>
+		<result name="error">/WEB-INF/pages/settings/PersonalSettings.jsp</result>
+		<result name="input">/WEB-INF/pages/settings/PersonalSettings.jsp</result>
+	</action>	
+	<action name="Logout"
+			class="com.proyecto.actions.LogoutAction">		
+		<result name="error"></result>
+		<result name="success">/WEB-INF/pages/Home.jsp</result>
+	</action>
+		<action name="ListarUsuario" method="UserList"
+			class="com.proyecto.actions.UserAction">
+		<interceptor-ref name="prepare">
+			<param name="alwaysInvokePrepare">false</param>
+		</interceptor-ref>
+<!-- 		Cuidado que lo mismo tenemos que llamar a prepare por obligación !!! -->
+		<result name="success">/WEB-INF/pages/UsuarioDisplay.jsp</result>
+		<result name="error" type="redirectAction">
+			<param name="actionName">VolverIndex</param>
+			<param name="namespace">/web</param>
+		</result>
+		<result name="input" type="redirectAction">
+			<param name="actionName">VolverIndex</param>
+			<param name="namespace">/web</param>
+		</result>
+	</action>
+	<action name="CrearInvitado" method="CrearInvitado"
+			class="com.proyecto.actions.UserAction">
+		<result type="redirectAction">
+			<param name="actionName">UnirInvitadoUsuario</param>
+			<param name="iduser">${id}</param>
+			<param name="namespace">/torneo</param>
+			<param name="id">${idtorneo}</param>
+		</result>
+		<result name="error" type="redirectAction">
+			<param name="actionName">VolverIndex</param>
+			<param name="namespace">/web</param>
+		</result>
+		<result name="input" type="redirectAction">
+			<param name="actionName">VolverIndex</param>
+			<param name="namespace">/web</param>
+		</result>			
+	</action>
+		<action name="RequestAsociarUser" method="RequestAsociarInvitado"
+			class="com.proyecto.actions.UserAction">
+		<result type="redirectAction">
+			<param name="actionName">VerTorneo</param>
+			<param name="namespace">/torneo</param>
+			<param name="id">${idtorneo}</param>
+		</result>
+		<result name="error" type="redirectAction">
+			<param name="actionName">VolverIndex</param>
+			<param name="namespace">/web</param>
+		</result>
+		<result name="input" type="redirectAction">
+			<param name="actionName">VolverIndex</param>
+			<param name="namespace">/web</param>
+		</result>			
+	</action>
+
+		<action name="AceptarRequestUserInvitado" method="AceptarRequestInvitado"
+			class="com.proyecto.actions.UserAction">
+		<result type="redirectAction">
+			<param name="actionName">EliminarUserInvitado</param>
+			<param name="id">${entero}</param>
+			<param name="idtorneo">${idtorneo}</param>
+		</result>
+		<result name="error" type="redirectAction">
+			<param name="actionName">VolverIndex</param>
+			<param name="namespace">/web</param>
+		</result>
+		<result name="input" type="redirectAction">
+			<param name="actionName">VolverIndex</param>
+			<param name="namespace">/web</param>
+		</result>			
+	</action>
+	
+	
+		<action name="RechazarRequestUserInvitado" method="RechazarRequestInvitado"
+			class="com.proyecto.actions.UserAction">
+		<result type="redirectAction">
+			<param name="actionName">VerTorneo</param>
+			<param name="namespace">/torneo</param>
+			<param name="id">${idtorneo}</param>
+		</result>
+		<result name="error" type="redirectAction">
+			<param name="actionName">VolverIndex</param>
+			<param name="namespace">/web</param>
+		</result>
+		<result name="input" type="redirectAction">
+			<param name="actionName">VolverIndex</param>
+			<param name="namespace">/web</param>
+		</result>		
+	</action>
+		<action name="EliminarUserInvitado" method="delete"
+			class="com.proyecto.actions.UserAction">
+		<result type="redirectAction">
+			<param name="actionName">VerTorneo</param>
+			<param name="namespace">/torneo</param>
+			<param name="id">${idtorneo}</param>
+		</result>
+		<result name="error" type="redirectAction">
+			<param name="actionName">VolverIndex</param>
+			<param name="namespace">/web</param>
+		</result>
+		<result name="input" type="redirectAction">
+			<param name="actionName">VolverIndex</param>
+			<param name="namespace">/web</param>
+		</result>			
+	</action>
+	<action name="TomarPerfilUsuario" method="CambiarPerfilUsuario"
+			class="com.proyecto.actions.UserAction">
+		<result type="redirectAction">
+			<param name="actionName">VolverIndex</param>
+			<param name="namespace">/web</param>
+		</result>
+	</action>	
+</package>
+ 
+</struts>

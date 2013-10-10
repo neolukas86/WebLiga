@@ -1,0 +1,26 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated 03-ene-2012 13:56:05 by Hibernate Tools 3.4.0.CR1 -->
+<hibernate-mapping>
+    <class name="com.proyecto.dominio.Manga" table="MANGA">
+  		<id name="id" type="int" >
+   			<column name="ID"/>
+   			<generator class="increment"/>
+        </id>
+        
+        <property name="juegosLocal" type="int">
+            <column name="JUEGOSLOCAL" />
+        </property>
+        <property name="juegosVisitante" type="int">
+            <column name="JUEGOSVISITANTE" />
+        </property>
+        <property name="numero" type="int">
+            <column name="NUMERO" />
+        </property>
+                        	
+        <many-to-one name="partidoIndVersus" 	column="PARTIDO_IND_VS" />
+        <many-to-one name="partidoEqVersus" 	column="PARTIDO_EQ_VS" />
+        
+    </class>
+</hibernate-mapping>

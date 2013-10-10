@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC
+"-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"
+"http://struts.apache.org/dtds/struts-2.0.dtd">
+ 
+<struts>
+ 
+<package name="noticia" extends="default">
+	<action name="IrNoticia"
+			class="com.proyecto.actions.UtilAction">
+		<param name="noticia">${noticia}</param>
+		<result name="success">/WEB-INF/pages/noticias/index/IndexNoticia.jsp</result>
+		<result name="input">/WEB-INF/pages/noticias/index/IndexNoticia.jsp</result>
+	</action>			
+	
+</package>
+ 
+</struts>
